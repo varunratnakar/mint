@@ -1,5 +1,5 @@
 # MINT
-This repository provides an entry point to the services and tools included in the MINT framework, including a pointer to their latest release or DOI:
+This repository provides an entry point to the services and tools included in the MINT framework, including a pointer to their latest release or DOI. This page can also be browsed at https://mintproject.github.io/mint:
 
 ![image](architecture_reduced.png)
 
