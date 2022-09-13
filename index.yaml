@@ -9,6 +9,6 @@ entries:
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.0.tgz
+    - https://mintproject.github.io/mint/MINT-0.1.0.tgz
     version: 0.1.0
 generated: "2022-09-13T10:12:43.586393034-03:00"
