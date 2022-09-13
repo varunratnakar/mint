@@ -3,12 +3,32 @@ entries:
   MINT:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-13T10:12:43.587897001-03:00"
+    created: "2022-09-13T11:05:29.78164151-03:00"
+    description: A Helm chart for MINT
+    digest: c217e51981cc3f62cea28fe443082d153d4210d90de1e437d72d19c713f0fae3
+    name: MINT
+    type: application
+    urls:
+    - https://mintproject.github.io/mint/helm/MINT-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-13T11:05:29.780735904-03:00"
     description: A Helm chart for MINT
     digest: 18f42649890a28c6eb34d4a2f57d2d99d318d208c3613691c8deb957713de1f0
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/MINT-0.1.0.tgz
+    - https://mintproject.github.io/mint/helm/MINT-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-13T10:12:43.586393034-03:00"
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-13T11:05:29.78242011-03:00"
+    description: A Helm chart for MINT
+    digest: 18f42649890a28c6eb34d4a2f57d2d99d318d208c3613691c8deb957713de1f0
+    name: MINT
+    type: application
+    urls:
+    - https://mintproject.github.io/mint/helm/helm/MINT-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-09-13T11:05:29.779806597-03:00"
