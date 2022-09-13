@@ -55,10 +55,10 @@ spec:
             httpGet:
               path: /v1.8.0/units?username=mint%40isi.edu&page=1&per_page=200
               port: http
-          readinessProbe:
-            httpGet:
-              path: /v1.8.0/units?username=mint%40isi.edu&page=1&per_page=200
-              port: http
+            timeoutSeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           env:
             - name: CONTEXT_DIR
               value: "{{ .environment.context_dir }}"
@@ -96,3 +96,4 @@ spec:
             - name: http
               containerPort: 3030
               protocol: TCP
+          
