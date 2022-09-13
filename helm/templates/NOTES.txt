@@ -5,9 +5,17 @@ finalize its configuration.
 
 1. Initialize the database:
 
+    # Create database tables
     $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
-        hasura migrate apply && hasura metadata apply && hasura seeds apply
+        hasura migrate apply 
 
+    # Create metadata
+    $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
+        hasura metadata apply
+
+    # Populate with regions and variables
+    $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
+        hasura seeds apply
 
 1. Get the application URL by running these commands:
 {{- if .Values.ingress.enabled }}
