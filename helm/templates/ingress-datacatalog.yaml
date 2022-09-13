@@ -31,6 +31,6 @@ spec:
               name: {{ include "mint.prefix" . }}-data-catalog
               port:
                 number: 80
-      {{- if .Values.mint_hostname }}
-      host: datacatalog.{{ .Values.mint_hostname }}
+      {{- if .Values.hostname }}
+      host: datacatalog.{{ .Values.hostname }}
       {{- end }}

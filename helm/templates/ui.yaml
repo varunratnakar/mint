@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: ui-config-map
+            name: {{ include "mint.prefix" . }}-ui-config-map
       containers:
         - name: ui
           {{- with .Values.components.ui  }}

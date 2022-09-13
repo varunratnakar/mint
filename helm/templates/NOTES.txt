@@ -5,7 +5,7 @@ finalize its configuration.
 
 1. Initialize the database:
 
-    $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ .Release.Name }}-hasura -c hasura -- \
+    $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
         hasura migrate apply && hasura metadata apply && hasura seeds apply
 
 
@@ -13,7 +13,7 @@ finalize its configuration.
 {{- if .Values.ingress.enabled }}
 {{- range $host := .Values.ingress.hosts }}
   {{- range .paths }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $.Values.hostname }}{{ .path }}
   {{- end }}
 {{- end }}
 {{- else if contains "NodePort" .Values.service.type }}
