@@ -1,0 +1,181 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare
+mint_hostname: mint.local
+welcome_message: Welcome to Hernan's MINT
+
+components:
+  cromo:
+    enabled: true
+    image:
+      repository: mintproject/cromo
+      tag: latest
+      pullPolicy: IfNotPresent
+  data_catalog:
+    enabled: true
+    image:
+      repository: mintproject/data-catalog
+      tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      pullPolicy: IfNotPresent
+  data_catalog_db:
+    enabled: true
+    image:
+      repository: mintproject/data-catalog-db
+      tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      pullPolicy: IfNotPresent
+  model_catalog_endpoint:
+    enabled: true
+    image:
+      repository: mintproject/model-catalog-endpoint
+      tag: 91dabbb1c1f7b2b838e8d8e75a4091e5ec40d4a1
+      pullPolicy: IfNotPresent
+  hasura:
+    enabled: true
+    image:
+      repository: mintproject/graphql-engine
+      tag: e04affe55c1a623ec4b0cd7114c563ad74841337
+      pullPolicy: IfNotPresent
+    environment:
+      enable_console: true
+      enable_dev_mode: false
+      unauthorized_role: anonymous
+  hasura_db:
+    enabled: true
+    image:
+      repository: postgis/postgis
+      tag: 10-2.5-alpine
+      pullPolicy: IfNotPresent
+  model_catalog_api:
+    enabled: true
+    image:
+      repository: mintproject/model-catalog-api
+      tag: latest
+      pullPolicy: IfNotPresent
+    environment:
+      context_dir: contexts/
+      queries_dir: queries/
+      graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
+      prefix: https://w3id.org/okn/i/mint/
+  ui:
+    enabled: true
+    image:
+      repository: mintproject/mint-ui-lit
+      tag: 547b3504e98856f52b3a03e862195384a305b87b
+      pullPolicy: IfNotPresent
+
+
+google:
+  maps:
+    key: AIzaSyBl8J85KibSuhHEw_j0JTlITVTBb8oXiMo
+
+
+shared_storage:
+  backend: hostpath  # hostpath | cephfs | nfs
+  volume_size: 200
+  access_modes: ReadWriteMany
+  shared_volume_mount_path: "/var/mint"
+  hostpath:
+    root_path: "/var/mint"
+
+secrets:
+  database:
+    data_catalog:
+      username: "datacatalog"
+      password: "CHANGEME"
+      database: "datacatalog"
+    model_catalog_endpoint:
+      username: "admin"
+      password: "CHANGEME"
+    hasura:
+      username: "hasura"
+      database: "hasura"
+      password: "CHANGEME"
+  hasura:
+    jwt_secret: '{"type": "RS256", "key": "-----BEGIN CERTIFICATE-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyQQ56WKKsVCUs8n9swlv5DV7st7UUdvNoDSnwovdU2vinQQ686//vRqlUJ5vpyI7r75qTXCPkXUitDhPvGEMfChnb9tuWdymSyZmMmT+34oaYo/2bGSZjTlLRVfRJjUnFYeWoVLoXVKJolyDWtU6bXbFNnUyysb/6YIpg5sSwxkLs/9yl6HsWdFconxPJO6KmMPSjcOc0fZermNq+cOEvj1OqRhVkxDqBebreI+zcgrJHNSN8d6cxTmfVQl1jIPHvxE5oN7qUdfYmK4D+SOlj8FlkUvwis+3Ix2AQsvNoOD1OzuqUOd/FpXBnEGaeTq9EMwDxplNqltR/qT3/poUwIDAQAB\n-----END CERTIFICATE-----"}'
+    admin_secret: "CHANGEME"
+
+
+auth:
+  client_id: model_catalog
+  url: https://auth.mint.isi.edu/auth/
+  realm: production
+  ui_client_id: mint-ui
+  server: https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token
+
+  
+
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+
+service:
+  type: ClusterIP
+  port: 80
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+
+ingress:
+  enabled: true 
+  className: ""
+  annotations:
+    kubernetes.io/ingress.class: public
+    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

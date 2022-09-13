@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hasura-{{ include "mint.prefix" . }}-ingress
+  namespace: {{ .Release.Namespace }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- with .Values.ingress.tls }}
+  {{- if and .self_signed_cert .secret_name }}
+    {{- fail "Cannot set `ingress.tls.secret_name` and `ingress.tls.self_signed_cert` at the same time" }}
+  {{- end }}
+  {{- if .self_signed_cert }}
+  tls:
+    - secretName: hasura-{{ include "mint.prefix" $ }}-tls-secret
+  {{- end }}
+  {{- if .secret_name }}
+  tls:
+    - secretName: {{ .secret_name | quote }}
+  {{- end }}
+  {{- end }}
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ include "mint.prefix" . }}-hasura
+              port:
+                number: 80
+      {{- if .Values.mint_hostname }}
+      host: graphql.{{ .Values.mint_hostname }}
+      {{- end }}

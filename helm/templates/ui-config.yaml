@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ui-config-map
+  namespace: {{ .Release.Namespace }}
+data:
+  config.js: |
+    window.REACT_APP_WELCOME_MESSAGE = {{ .Values.welcome_message | quote }};
+    // Mint Services
+    window.REACT_APP_DATA_CATALOG_API = "http://datacatalog.{{ .Values.mint_hostname }}";
+    window.REACT_APP_CROMO_API = "http://cromo.{{ .Values.mint_hostname }}/v1.0";
+    window.REACT_APP_MODEL_CATALOG_API = "http://api.models.{{ .Values.mint_hostname }}/v1.8.0";
+    window.REACT_APP_ENSEMBLE_MANAGER_API = "http://dev.ensemble.mint.isi.edu/v1";
+    window.REACT_APP_GRAPHQL_ENDPOINT = "graphql.mint.local/v1/graphql";
+    window.REACT_APP_GRAPHQL_ENABLE_SSL = false;
+    
+    // Google API Key
+    window.REACT_APP_GOOGLE_MAPS_KEY = {{ .Values.google.maps.key | quote }};
+
+    //Authentications
+    window.REACT_APP_AUTH_SERVER = {{ .Values.auth.url | quote }};
+    window.REACT_APP_AUTH_REALM = {{ .Values.auth.realm | quote }};
+    window.REACT_APP_AUTH_CLIENT_ID = {{ .Values.auth.ui_client_id | quote }};
+
+    //Execution - Local
+    window.REACT_APP_EXECUTION_ENGINE = "localex";
+    window.REACT_APP_LOCALEX_CODEDIR = "/data/storage/mint/localex/code";
+    window.REACT_APP_LOCALEX_DATADIR = "/data/storage/mint/data-catalog/production/local-execution";
+    window.REACT_APP_LOCALEX_DATAURL = "http://data.mint.isi.edu/files/local-execution";
+    window.REACT_APP_LOCALEX_LOGDIR = "/data/storage/mint/data-catalog/production/local-execution/logs";
+    window.REACT_APP_LOCALEX_LOGURL = "http://data.mint.isi.edu/files/local-execution/logs";
+    window.REACT_APP_LOCALEX_PARALLEL = 50;
+
+    //Execution - Wings
+    window.REACT_APP_WINGS_EXPORT_URL = "http://data.mint.isi.edu/files/wings-export";
+    window.REACT_APP_WINGS_STORAGE = "/data/storage/mint/data-catalog/production/wings-export";
+    window.REACT_APP_WINGS_DOTPATH = "/data/storage/mint/data-catalog/production/wings-export/dot";
+    window.REACT_APP_WINGS_ONTURL = "http://data.mint.isi.edu/files/wings-export/dot";
+
+
+    //Visualization and Ingestion
+    window.REACT_APP_VISUALIZATION_URL = "http://dev.viz.mint.isi.edu";
+    window.REACT_APP_INGESTION_API = "http://node1.ingestion.mint.isi.edu/v1.3.0";
+
