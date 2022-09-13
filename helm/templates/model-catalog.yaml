@@ -50,6 +50,15 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /v1.8.0/units?username=mint%40isi.edu&page=1&per_page=200
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /v1.8.0/units?username=mint%40isi.edu&page=1&per_page=200
+              port: http
           env:
             - name: CONTEXT_DIR
               value: "{{ .environment.context_dir }}"
