@@ -31,6 +31,6 @@ spec:
               name: {{ include "mint.prefix" . }}-ui
               port:
                 number: 80
-      {{- if .Values.mint_hostname }}
-      host: {{ .Values.mint_hostname }}
+      {{- if .Values.hostname }}
+      host: {{ .Values.hostname }}
       {{- end }}

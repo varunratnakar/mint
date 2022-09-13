@@ -31,6 +31,6 @@ spec:
               name: {{ include "mint.prefix" . }}-model-catalog
               port:
                 number: 3030
-      {{- if .Values.mint_hostname }}
-      host: endpoint.models.{{ .Values.mint_hostname }}
+      {{- if .Values.hostname }}
+      host: endpoint.models.{{ .Values.hostname }}
       {{- end }}

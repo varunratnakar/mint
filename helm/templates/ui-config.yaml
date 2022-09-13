@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ui-config-map
+  name: {{ include "mint.prefix" . }}-ui-config-map
   namespace: {{ .Release.Namespace }}
 data:
   config.js: |
     window.REACT_APP_WELCOME_MESSAGE = {{ .Values.welcome_message | quote }};
     // Mint Services
-    window.REACT_APP_DATA_CATALOG_API = "http://datacatalog.{{ .Values.mint_hostname }}";
-    window.REACT_APP_CROMO_API = "http://cromo.{{ .Values.mint_hostname }}/v1.0";
-    window.REACT_APP_MODEL_CATALOG_API = "http://api.models.{{ .Values.mint_hostname }}/v1.8.0";
+    window.REACT_APP_DATA_CATALOG_API = "http://datacatalog.{{ .Values.hostname }}";
+    window.REACT_APP_CROMO_API = "http://cromo.{{ .Values.hostname }}/v1.0";
+    window.REACT_APP_MODEL_CATALOG_API = "http://api.models.{{ .Values.hostname }}/v1.8.0";
     window.REACT_APP_ENSEMBLE_MANAGER_API = "http://dev.ensemble.mint.isi.edu/v1";
     window.REACT_APP_GRAPHQL_ENDPOINT = "graphql.mint.local/v1/graphql";
     window.REACT_APP_GRAPHQL_ENABLE_SSL = false;

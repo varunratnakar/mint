@@ -31,6 +31,6 @@ spec:
               name: {{ include "mint.prefix" . }}-cromo
               port:
                 number: 80
-      {{- if .Values.mint_hostname }}
-      host: cromo.{{ .Values.mint_hostname }}
+      {{- if .Values.hostname }}
+      host: cromo.{{ .Values.hostname }}
       {{- end }}

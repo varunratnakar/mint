@@ -31,6 +31,6 @@ spec:
               name: {{ include "mint.prefix" . }}-hasura
               port:
                 number: 80
-      {{- if .Values.mint_hostname }}
-      host: graphql.{{ .Values.mint_hostname }}
+      {{- if .Values.hostname }}
+      host: graphql.{{ .Values.hostname }}
       {{- end }}
