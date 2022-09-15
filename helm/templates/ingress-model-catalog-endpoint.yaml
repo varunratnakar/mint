@@ -9,16 +9,11 @@ metadata:
   {{- end }}
 spec:
   {{- with .Values.ingress.tls }}
-  {{- if and .self_signed_cert .secret_name }}
-    {{- fail "Cannot set `ingress.tls.secret_name` and `ingress.tls.self_signed_cert` at the same time" }}
-  {{- end }}
-  {{- if .self_signed_cert }}
+  {{- if .enabled }}
   tls:
-    - secretName: model-catalog-endpoint-{{ include "mint.prefix" $ }}-tls-secret
-  {{- end }}
-  {{- if .secret_name }}
-  tls:
-    - secretName: {{ .secret_name | quote }}
+    - hosts:
+      - endpoint.models.{{ $.Values.hostname }} 
+      secretName: model-catalog-endpoint-{{ include "mint.prefix" $ }}-tls-secret
   {{- end }}
   {{- end }}
   rules:
