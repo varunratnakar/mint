@@ -5,12 +5,14 @@ hostname: mint.local
 welcome_message: Welcome to MINT
 
 components:
+  # -- Cromo configuration
   cromo:
     enabled: true
     image:
       repository: mintproject/cromo
       tag: latest
       pullPolicy: IfNotPresent
+  # -- Data Catalog configuration
   data_catalog:
     enabled: true
     image:
@@ -23,12 +25,14 @@ components:
       repository: mintproject/data-catalog-db
       tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
       pullPolicy: IfNotPresent
+  # -- Model Catalog RDF store configuration
   model_catalog_endpoint:
     enabled: true
     image:
       repository: mintproject/model-catalog-endpoint
       tag: 91dabbb1c1f7b2b838e8d8e75a4091e5ec40d4a1
       pullPolicy: IfNotPresent
+  # -- GraphQL hasura engine
   hasura:
     enabled: true
     image:
@@ -39,12 +43,14 @@ components:
       enable_console: true
       enable_dev_mode: false
       unauthorized_role: anonymous
+  # -- GraphQL Postgres Database
   hasura_db:
     enabled: true
     image:
       repository: postgis/postgis
       tag: 10-2.5-alpine
       pullPolicy: IfNotPresent
+  # -- Model Catalog configuration
   model_catalog_api:
     enabled: true
     image:
@@ -56,6 +62,7 @@ components:
       queries_dir: queries/
       graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
       prefix: https://w3id.org/okn/i/mint/
+  # -- User Interface configuration
   ui:
     enabled: true
     image:
@@ -65,7 +72,9 @@ components:
 
 
 google:
+  # -- Google Maps API key
   maps:
+    # -- Google Maps API key
     key: CHANGEME 
 
 
@@ -79,27 +88,37 @@ shared_storage:
 
 secrets:
   database:
+    # -- Data Catalog database credentials
     data_catalog:
       username: "datacatalog"
       password: "CHANGEME"
       database: "datacatalog"
+    # -- Model Catalog database credentials
     model_catalog_endpoint:
       username: "admin"
       password: "CHANGEME"
+    # -- GraphQL database credentials
     hasura:
       username: "hasura"
       database: "hasura"
       password: "CHANGEME"
+  # -- GraphQL admin credentials
   hasura:
     jwt_secret: "CHANGE"
     admin_secret: "CHANGEME"
 
 
+# -- Authentication configuration
 auth:
+  # -- Client ID
   client_id: model_catalog
+  # -- Keycloak URL
   url: https://auth.mint.isi.edu/auth/
+  # -- Realm
   realm: production
+  # -- Client ID
   ui_client_id: mint-ui
+  # -- Keylocka URL token
   server: https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token
 
   
