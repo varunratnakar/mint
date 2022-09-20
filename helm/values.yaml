@@ -1,8 +1,8 @@
 # Default values for helm.
 # This is a YAML-formatted file.
 # Declare
-hostname: dev.mint.disk.isi.edu
-welcome_message: Welcome to Hernan's MINT
+hostname: mint.local 
+welcome_message: Welcome to MINT
 
 components:
   cromo:
@@ -66,7 +66,7 @@ components:
 
 google:
   maps:
-    key: AIzaSyBl8J85KibSuhHEw_j0JTlITVTBb8oXiMo
+    key: CHANGEME 
 
 
 shared_storage:
@@ -91,7 +91,7 @@ secrets:
       database: "hasura"
       password: "CHANGEME"
   hasura:
-    jwt_secret: '{"type": "RS256", "key": "-----BEGIN CERTIFICATE-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyQQ56WKKsVCUs8n9swlv5DV7st7UUdvNoDSnwovdU2vinQQ686//vRqlUJ5vpyI7r75qTXCPkXUitDhPvGEMfChnb9tuWdymSyZmMmT+34oaYo/2bGSZjTlLRVfRJjUnFYeWoVLoXVKJolyDWtU6bXbFNnUyysb/6YIpg5sSwxkLs/9yl6HsWdFconxPJO6KmMPSjcOc0fZermNq+cOEvj1OqRhVkxDqBebreI+zcgrJHNSN8d6cxTmfVQl1jIPHvxE5oN7qUdfYmK4D+SOlj8FlkUvwis+3Ix2AQsvNoOD1OzuqUOd/FpXBnEGaeTq9EMwDxplNqltR/qT3/poUwIDAQAB\n-----END CERTIFICATE-----"}'
+    jwt_secret: "CHANGE"
     admin_secret: "CHANGEME"
 
 
@@ -103,8 +103,6 @@ auth:
   server: https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token
 
   
-
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -145,10 +143,7 @@ ingress:
     nginx.ingress.kubernetes.io/enable-cors: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   tls:
-    enabled: true
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+    enabled: false 
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
