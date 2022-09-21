@@ -119,7 +119,6 @@ auth:
   # -- Client ID
   ui_client_id: mint-ui
   # -- Keylocka URL token
-  server: https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token
 
   
 imagePullSecrets: []

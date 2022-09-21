@@ -12,7 +12,6 @@ A Helm chart for MINT
 | auth | object | `{"client_id":"model_catalog","realm":"production","server":"https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token","ui_client_id":"mint-ui","url":"https://auth.mint.isi.edu/auth/"}` | Authentication configuration |
 | auth.client_id | string | `"model_catalog"` | Client ID |
 | auth.realm | string | `"production"` | Realm |
-| auth.server | string | `"https://auth.mint.isi.edu/auth/realms/production/protocol/openid-connect/token"` | Keylocka URL token |
 | auth.ui_client_id | string | `"mint-ui"` | Client ID |
 | auth.url | string | `"https://auth.mint.isi.edu/auth/"` | Keycloak URL |
 | autoscaling.enabled | bool | `false` |  |

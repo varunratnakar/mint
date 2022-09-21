@@ -74,7 +74,7 @@ spec:
             - name: AUTH_CLIENT_ID
               value: {{ .Values.auth.client_id }}
             - name: AUTH_SERVER
-              value: {{ .Values.auth.server }}
+              value: {{ .Values.auth.url }}/realms/{{ .Values.auth.realm }}/protocol/openid-connect/token
             - name: ENDPOINT_PASSWORD
               valueFrom:
                 secretKeyRef:

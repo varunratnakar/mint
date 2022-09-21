@@ -8,12 +8,12 @@ data:
   config.js: |
     window.REACT_APP_WELCOME_MESSAGE = {{ .Values.welcome_message | quote }};
     // Mint Services
-    window.REACT_APP_DATA_CATALOG_API = "http{{ if $.Values.ingress.tls }}s{{ end }}://datacatalog.{{ .Values.hostname }}";
-    window.REACT_APP_CROMO_API = "http{{ if $.Values.ingress.tls }}s{{ end }}://cromo.{{ .Values.hostname }}/v1.0";
-    window.REACT_APP_MODEL_CATALOG_API = "http{{ if $.Values.ingress.tls }}s{{ end }}://api.models.{{ .Values.hostname }}/v1.8.0";
+    window.REACT_APP_DATA_CATALOG_API = "http{{ if $.Values.ingress.tls.enabled }}s{{ end }}://datacatalog.{{ .Values.hostname }}";
+    window.REACT_APP_CROMO_API = "http{{ if $.Values.ingress.tls.enabled }}s{{ end }}://cromo.{{ .Values.hostname }}/v1.0";
+    window.REACT_APP_MODEL_CATALOG_API = "http{{ if $.Values.ingress.tls.enabled }}s{{ end }}://api.models.{{ .Values.hostname }}/v1.8.0";
     window.REACT_APP_GRAPHQL_ENDPOINT = "graphql.{{ .Values.hostname }}/v1/graphql";
     window.REACT_APP_ENSEMBLE_MANAGER_API = "http://dev.ensemble.mint.isi.edu/v1";
-    window.REACT_APP_GRAPHQL_ENABLE_SSL = {{ if $.Values.ingress.tls }}true{{else}}false{{ end }};
+    window.REACT_APP_GRAPHQL_ENABLE_SSL = {{ if $.Values.ingress.tls.enabled  }}true{{else}}false{{ end }};
     
     // Google API Key
     window.REACT_APP_GOOGLE_MAPS_KEY = {{ .Values.google.maps.key | quote }};
