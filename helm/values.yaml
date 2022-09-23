@@ -1,7 +1,6 @@
 # Default values for helm.
 # This is a YAML-formatted file.
 # Declare
-hostname: mint.local 
 welcome_message: Welcome to MINT
 
 components:
@@ -12,13 +11,38 @@ components:
       repository: mintproject/cromo
       tag: latest
       pullPolicy: IfNotPresent
-  # -- Data Catalog configuration
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        #cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: cromo.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
   data_catalog:
     enabled: true
     image:
       repository: mintproject/data-catalog
       tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
       pullPolicy: IfNotPresent
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: datacatalog.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
   data_catalog_db:
     enabled: true
     image:
@@ -32,6 +56,20 @@ components:
       repository: mintproject/model-catalog-endpoint
       tag: 91dabbb1c1f7b2b838e8d8e75a4091e5ec40d4a1
       pullPolicy: IfNotPresent
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: endpoint.models.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
+        # kubernetes.io/tls-acme: "true"
   # -- GraphQL hasura engine
   hasura:
     enabled: true
@@ -43,6 +81,19 @@ components:
       enable_console: true
       enable_dev_mode: false
       unauthorized_role: anonymous
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: graphql.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
   # -- GraphQL Postgres Database
   hasura_db:
     enabled: true
@@ -62,6 +113,19 @@ components:
       queries_dir: queries/
       graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
       prefix: https://w3id.org/okn/i/mint/
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: api.models.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
   # -- User Interface configuration
   ui:
     enabled: true
@@ -69,6 +133,19 @@ components:
       repository: mintproject/mint-ui-lit
       tag: 547b3504e98856f52b3a03e862195384a305b87b
       pullPolicy: IfNotPresent
+    ingress:
+      enabled: true 
+      className: public 
+      annotations: 
+        nginx.ingress.kubernetes.io/proxy-body-size: 8m
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
 
 
 google:
