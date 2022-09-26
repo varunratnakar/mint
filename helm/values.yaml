@@ -6,145 +6,205 @@ welcome_message: Welcome to MINT
 components:
   # -- Cromo configuration
   cromo:
+    # - enable the cromo component
     enabled: true
     image:
+      # -- cromo image repository
       repository: mintproject/cromo
+      # -- cromo image tag
       tag: latest
+      # -- cromo image pull policy
       pullPolicy: IfNotPresent
+    # -- cromo ingress configuration
     ingress:
-      enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        #cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      # -- enable the cromo ingress
+      enabled: true
+      # -- cromo ingress class name
+      className: ""
+      # -- cromo ingress annotations
+      annotations: {}
+      # -- cromo ingress hosts
       hosts:
         - host: cromo.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- cromo ingress tls configuration
       tls: []
   data_catalog:
+    # -- enable the data catalog component
     enabled: true
     image:
+      # -- data catalog image repository
       repository: mintproject/data-catalog
+      # -- data catalog image tag
       tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      # -- data catalog image pull policy
       pullPolicy: IfNotPresent
+    # -- data catalog ingress configuration
     ingress:
+      # -- enable the data catalog ingress
       enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        # kubernetes.io/tls-acme: "true"
+      # -- data catalog ingress class name
+      className: "" 
+      # -- data catalog ingress annotations
+      annotations: {} 
+      # -- data catalog ingress hosts
       hosts:
         - host: datacatalog.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- data catalog ingress tls configuration
       tls: []
+  # -- data database component
   data_catalog_db:
-    enabled: true
     image:
+      # -- data catalog database image repository
       repository: mintproject/data-catalog-db
+      # -- data catalog database image tag
       tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
   # -- Model Catalog RDF store configuration
   model_catalog_endpoint:
+    # -- enable the model catalog endpoint component
     enabled: true
+    # -- model catalog endpoint image repository
     image:
+      # -- model catalog endpoint image repository
       repository: mintproject/model-catalog-endpoint
+      # -- model catalog endpoint image tag
       tag: 91dabbb1c1f7b2b838e8d8e75a4091e5ec40d4a1
+      # -- model catalog endpoint image pull policy
       pullPolicy: IfNotPresent
+    # -- model catalog endpoint ingress configuration
     ingress:
+      # -- enable the model catalog endpoint ingress
       enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        # kubernetes.io/tls-acme: "true"
+      # -- model catalog endpoint ingress class name
+      className: "" 
+      # -- model catalog endpoint ingress annotations
+      annotations: {} 
+      # -- model catalog endpoint ingress hosts
       hosts:
         - host: endpoint.models.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- model catalog endpoint ingress tls configuration
       tls: []
-        # kubernetes.io/tls-acme: "true"
   # -- GraphQL hasura engine
   hasura:
+    # -- enable the hasura component
     enabled: true
+    # -- hasura image repository
     image:
+      # -- hasura image repository
       repository: mintproject/graphql-engine
+      # -- hasura image tag
       tag: 597064529d763ec8df612d239dd54c307de97e57
+      # --  hasura image pull policy
       pullPolicy: IfNotPresent
+    # -- hasura environment variables
     environment:
+      # -- enable the hasura console
       enable_console: true
+      # -- enable the hasura dev mode
       enable_dev_mode: false
+      # -- unauthenticated role
       unauthorized_role: anonymous
+    # -- hasura ingress configuration
     ingress:
+      # -- enable the hasura ingress
       enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        # kubernetes.io/tls-acme: "true"
+      # -- hasura ingress class name
+      className: 
+      # -- hasura ingress annotations
+      annotations: {} 
+      # -- hasura ingress hosts
       hosts:
         - host: graphql.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- hasura ingress tls configuration
       tls: []
   # -- GraphQL Postgres Database
   hasura_db:
-    enabled: true
+    # -- hasura database image repository
     image:
+      # -- hasura database image repository
       repository: postgis/postgis
+      # -- hasura database image tag
       tag: 10-2.5-alpine
+      # -- hasura database image pull policy
       pullPolicy: IfNotPresent
   # -- Model Catalog configuration
   model_catalog_api:
+    # -- enable the model catalog api component
     enabled: true
+    # -- model catalog api image details 
     image:
+      # -- model catalog api image repository
       repository: mintproject/model-catalog-api
+      # -- model catalog api image tag
       tag: latest
+      # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
+    # -- model catalog api environment variables 
     environment:
+      # -- where are the contexts stored
       context_dir: contexts/
+      # -- where are the queries templates stored
       queries_dir: queries/
+      # -- the graph prefix used by the RDF store
       graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
+      # -- uri of the RDF resource
       prefix: https://w3id.org/okn/i/mint/
+    # -- model catalog api ingress configuration
     ingress:
+      # -- enable the model catalog api ingress
       enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        # kubernetes.io/tls-acme: "true"
+      # -- model catalog api ingress class name
+      className: "" 
+      # -- model catalog api ingress annotations
+      annotations: {} 
+      # -- model catalog api ingress hosts
       hosts:
         - host: api.models.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- model catalog api ingress tls configuration
       tls: []
   # -- User Interface configuration
   ui:
+    # -- enable the ui component
     enabled: true
+    # -- ui image details
     image:
+      # -- ui image repository
       repository: mintproject/mint-ui-lit
+      # -- ui image tag
       tag: 547b3504e98856f52b3a03e862195384a305b87b
+      # -- ui image pull policy
       pullPolicy: IfNotPresent
+    # -- ui ingress configuration
     ingress:
+      # -- enable the ui ingress
       enabled: true 
-      className: public 
-      annotations: 
-        nginx.ingress.kubernetes.io/proxy-body-size: 8m
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        # kubernetes.io/tls-acme: "true"
+      # -- ui ingress class name
+      className: "" 
+      # -- ui ingress annotations
+      annotations: {} 
+      # -- ui ingress hosts
       hosts:
         - host: mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
+      # -- ui ingress tls configuration
       tls: []
 
 
@@ -156,10 +216,15 @@ google:
 
 
 shared_storage:
+  # -- Shared volume storage backend
   backend: hostpath  # hostpath | cephfs | nfs
+  # -- Shared volume size
   volume_size: 200
+  # -- Shared volume access mode
   access_modes: ReadWriteMany
+  # -- Path inside the MINT components where the shared volume will be mounted
   shared_volume_mount_path: "/var/mint"
+  # -- Path to the MINT directory inside the underlying storage volume
   hostpath:
     root_path: "/var/mint"
 
@@ -167,34 +232,44 @@ secrets:
   database:
     # -- Data Catalog database credentials
     data_catalog:
+      # -- Data Catalog database username
       username: "datacatalog"
+      # -- Data Catalog database password
       password: "CHANGEME"
+      # -- Data Catalog database name
       database: "datacatalog"
     # -- Model Catalog database credentials
     model_catalog_endpoint:
+      # -- Model Catalog database username
       username: "admin"
+      # -- Model Catalog database password
       password: "CHANGEME"
     # -- GraphQL database credentials
     hasura:
+      # -- GraphQL database username
       username: "hasura"
-      database: "hasura"
+      # -- GraphQL database password
       password: "CHANGEME"
+      # -- GraphQL database name
+      database: "hasura"
   # -- GraphQL admin credentials
   hasura:
+    # -- RS256 JWT public certificate from the OIDC provider
     jwt_secret: "CHANGE"
+    # -- HASURA_GRAPHQL_ADMIN_SECRET
     admin_secret: "CHANGEME"
 
 
 # -- Authentication configuration
 auth:
   # -- Client ID
-  client_id: model_catalog
+  client_id: client 
   # -- Keycloak URL
-  url: https://auth.mint.isi.edu/auth/
+  url: https://auth.example.com/
   # -- Realm
-  realm: production
+  realm: realm 
   # -- Client ID
-  ui_client_id: mint-ui
+  ui_client_id: client
   # -- Keylocka URL token
 
   
@@ -229,16 +304,6 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-
-ingress:
-  enabled: true 
-  annotations:
-    kubernetes.io/ingress.class: public
-    nginx.ingress.kubernetes.io/proxy-body-size: 8m
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-  tls:
-    enabled: false 
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

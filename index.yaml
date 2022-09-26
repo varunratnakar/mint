@@ -3,92 +3,92 @@ entries:
   MINT:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.871890592-03:00"
+    created: "2022-09-26T09:08:39.143255904-03:00"
     description: A Helm chart for MINT
-    digest: f452d6e588bf830715fcc88e55ed7ac43d46e5da07c38e3ab78fc65a4a5ae372
+    digest: f9bf5365c50c5ed9e62609de277cc8d350b874c75c996e70e9ec9a58c6f0c600
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.2.2.tgz
-    version: 0.2.2
+    - https://mintproject.github.io/mint/charts/MINT-0.2.3.tgz
+    version: 0.2.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.89352908-03:00"
+    created: "2022-09-26T09:08:39.141421286-03:00"
     description: A Helm chart for MINT
-    digest: 7451d386ca55ca3bcbb6f20e74953135a07163d75e68e6bebb00ab56d730b6a4
+    digest: 7e839c7397a2f4d2fc40a74885f14e1214db1c8dfe0de15de82f7f69025a2f64
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.2.2.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.2.2.tgz
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.887320011-03:00"
+    created: "2022-09-26T09:08:39.139527847-03:00"
     description: A Helm chart for MINT
     digest: d682a327bb7edbd8478f60f4fbbe652bd19240b2420fafd4fadcb010bdad330a
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.2.1.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.2.1.tgz
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.881394318-03:00"
+    created: "2022-09-26T09:08:39.125993619-03:00"
     description: A Helm chart for MINT
     digest: 90ef5332e1d5f7b04ab5c2c65411344370baae539c4e7d0377063a373e867636
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.2.0.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.879029778-03:00"
+    created: "2022-09-26T09:08:39.123353997-03:00"
     description: A Helm chart for MINT
     digest: d7534c936064ac704e57b1bc143684ddc9ac606568ef9bb6515c690cb3cb00bd
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.4.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.1.4.tgz
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.877310068-03:00"
+    created: "2022-09-26T09:08:39.120643586-03:00"
     description: A Helm chart for MINT
     digest: 51cad48a1795b51ab7cbb1eb177607cb77c36251210d9cdee1a05ea0f923dee8
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.3.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.1.3.tgz
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.875809491-03:00"
+    created: "2022-09-26T09:08:39.119299626-03:00"
     description: A Helm chart for MINT
     digest: c46dcecfee55dc90202e7c3d43cf5fec93b8631bbcfa207315fa006bba7dff97
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.2.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.873851705-03:00"
+    created: "2022-09-26T09:08:39.117439664-03:00"
     description: A Helm chart for MINT
     digest: c217e51981cc3f62cea28fe443082d153d4210d90de1e437d72d19c713f0fae3
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.1.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-21T11:26:47.872939226-03:00"
+    created: "2022-09-26T09:08:39.115094723-03:00"
     description: A Helm chart for MINT
     digest: 18f42649890a28c6eb34d4a2f57d2d99d318d208c3613691c8deb957713de1f0
     name: MINT
     type: application
     urls:
-    - https://mintproject.github.io/mint/helm/MINT-0.1.0.tgz
+    - https://mintproject.github.io/mint/charts/MINT-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-21T11:26:47.851844372-03:00"
+generated: "2022-09-26T09:08:39.113709253-03:00"
