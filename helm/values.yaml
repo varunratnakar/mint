@@ -144,6 +144,8 @@ components:
   model_catalog_api:
     # -- enable the model catalog api component
     enabled: true
+    # -- api version
+    api_version: 1.8.0
     # -- model catalog api image details 
     image:
       # -- model catalog api image repository
