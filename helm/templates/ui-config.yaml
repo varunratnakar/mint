@@ -25,7 +25,7 @@ data:
     {{ end }}
     {{ with .Values.components.hasura }}
     {{ if  .enabled }}
-    window.REACT_APP_GRAPHQL_ENDPOINT = "{{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}/v1/graphql";
+    window.REACT_APP_GRAPHQL_ENDPOINT = "{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}/v1/graphql";
     window.REACT_APP_GRAPHQL_ENABLE_SSL = {{ if .ingress.tls  }}true{{else}}false{{ end }};
     {{ end }}
     {{ end }}
