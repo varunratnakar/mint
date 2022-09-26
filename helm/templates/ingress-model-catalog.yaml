@@ -15,7 +15,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-model-catalog-api
+  name: {{ $fullName }}-model-catalog
   {{- with .Values.components.model_catalog_api.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -47,11 +47,11 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ $fullName }}-model-catalog-api
+                name: {{ $fullName }}-model-catalog
                 port:
                   number: {{ $svcPort }}
               {{- else }}
-              serviceName: {{ $fullName }}-model-catalog-api
+              serviceName: {{ $fullName }}-model-catalog
               servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
