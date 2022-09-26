@@ -10,25 +10,22 @@ data:
     // Mint Services
     {{ with .Values.components.cromo }}
     {{ if  .enabled }}
-    window.REACT_APP_CROMO_URL = http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}
+    window.REACT_APP_CROMO_URL = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
     {{ end }}
     {{ end }}
-
     {{ with .Values.components.data_catalog }}
     {{ if  .enabled }}
-    window.REACT_APP_DATA_CATALOG_URL = http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}
+    window.REACT_APP_DATA_CATALOG_URL = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
     {{ end }}
     {{ end }}
-
     {{ with .Values.components.model_catalog_api}}
     {{ if  .enabled }}
-    window.REACT_APP_MODEL_CATALOG_API = http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}
+    window.REACT_APP_MODEL_CATALOG_API = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
     {{ end }}
     {{ end }}
-
     {{ with .Values.components.hasura }}
     {{ if  .enabled }}
-    window.REACT_APP_GRAPHQL_ENDPOINT = {{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}/v1/graphql";
+    window.REACT_APP_GRAPHQL_ENDPOINT = "{{ with (first .ingress.hosts ) }}{{ .host }};{{ end }}/v1/graphql";
     window.REACT_APP_GRAPHQL_ENABLE_SSL = {{ if .ingress.tls  }}true{{else}}false{{ end }};
     {{ end }}
     {{ end }}
