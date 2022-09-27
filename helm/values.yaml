@@ -140,6 +140,34 @@ components:
       tag: 10-2.5-alpine
       # -- hasura database image pull policy
       pullPolicy: IfNotPresent
+  model_catalog_explorer:
+    # -- enable the model catalog api component
+    enabled: true
+    # -- api version
+    # -- model catalog api image details 
+    image:
+      # -- model catalog api image repository
+      repository: mintproject/model-catalog-explorer
+      # -- model catalog api image tag
+      tag: 2bc1ec44e5857f4870972367fddf0ca81ed8d27b
+      # -- model catalog api image pull policy
+      pullPolicy: IfNotPresent
+    # -- model catalog explorer ingress configuration
+    ingress:
+      # -- enable the model catalog api ingress
+      enabled: true 
+      # -- model catalog api ingress class name
+      className: "" 
+      # -- model catalog api ingress annotations
+      annotations: {} 
+      # -- model catalog api ingress hosts
+      hosts:
+        - host: models.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      # -- model catalog api ingress tls configuration
+      tls: []
   # -- Model Catalog configuration
   model_catalog_api:
     # -- enable the model catalog api component

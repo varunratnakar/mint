@@ -9,7 +9,11 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - name: "http"
+    - name: "http-model-explorer"
+      port: 8080
+      targetPort: 80
+      protocol: TCP
+    - name: "http-api"
       port: 80
       targetPort: 8080
       protocol: TCP
@@ -80,7 +84,20 @@ spec:
                 secretKeyRef:
                   name: {{ include "mint.prefix" . }}-model-catalog-endpoint-secrets
                   key: password
-
+        - name: model-catalog-explorer
+          {{- with .Values.components.model_catalog_explorer }}
+          image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+             
         - name: model-catalog-endpoint
           {{- with .Values.components.model_catalog_endpoint  }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
@@ -96,4 +113,3 @@ spec:
             - name: http
               containerPort: 3030
               protocol: TCP
-          
