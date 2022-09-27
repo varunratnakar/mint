@@ -47,12 +47,12 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ $fullName }}-model-catalog
+                name: {{ $fullName }}-model-catalog-explorer
                 port:
-                  number: 8080 
+                  number: 80
               {{- else }}
-              serviceName: {{ $fullName }}-model-catalog
-              servicePort: 8080
+              serviceName: {{ $fullName }}-model-catalog-explorer
+              servicePort: 80
               {{- end }}
           {{- end }}
     {{- end }}
