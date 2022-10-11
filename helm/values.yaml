@@ -285,7 +285,7 @@ secrets:
   # -- GraphQL admin credentials
   hasura:
     # -- RS256 JWT public certificate from the OIDC provider
-    jwt_secret: "CHANGE"
+    jwt_secret: '{"type": "RS256", "key": "-----BEGIN CERTIFICATE-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyQQ56WKKsVCUs8n9swlv5DV7st7UUdvNoDSnwovdU2vinQQ686//vRqlUJ5vpyI7r75qTXCPkXUitDhPvGEMfChnb9tuWdymSyZmMmT+34oaYo/2bGSZjTlLRVfRJjUnFYeWoVLoXVKJolyDWtU6bXbFNnUyysb/6YIpg5sSwxkLs/9yl6HsWdFconxPJO6KmMPSjcOc0fZermNq+cOEvj1OqRhVkxDqBebreI+zcgrJHNSN8d6cxTmfVQl1jIPHvxE5oN7qUdfYmK4D+SOlj8FlkUvwis+3Ix2AQsvNoOD1OzuqUOd/FpXBnEGaeTq9EMwDxplNqltR/qT3/poUwIDAQAB\n-----END CERTIFICATE-----"}'
     # -- HASURA_GRAPHQL_ADMIN_SECRET
     admin_secret: "CHANGEME"
 
@@ -293,13 +293,13 @@ secrets:
 # -- Authentication configuration
 auth:
   # -- Client ID
-  client_id: client 
+  client_id: model_catalog 
   # -- Keycloak URL
-  url: https://auth.example.com/
+  url: https://auth.mint.isi.edu/
   # -- Realm
   realm: realm 
   # -- Client ID
-  ui_client_id: client
+  ui_client_id: mint-ui
   # -- Keylocka URL token
 
   

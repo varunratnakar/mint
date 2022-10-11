@@ -3,7 +3,17 @@ entries:
   MINT:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.851574352-03:00"
+    created: "2022-10-11T10:17:10.577729057-03:00"
+    description: A Helm chart for MINT
+    digest: eab856896d66b164496bb2db3aaf2939cd2d6705e3f92eb97a5247a6f8c7e3f5
+    name: MINT
+    type: application
+    urls:
+    - https://mintproject.github.io/mint/charts/MINT-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-10-11T10:17:10.576588931-03:00"
     description: A Helm chart for MINT
     digest: 66186b196e359e3dc6bc93142a641daf759047770beead9e4fdeebf93d6757fc
     name: MINT
@@ -13,7 +23,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.850352227-03:00"
+    created: "2022-10-11T10:17:10.575475054-03:00"
     description: A Helm chart for MINT
     digest: d6e73e1a393c370f3da44366ed2828ea18cf48da8ebabcff4ebbd32df3c54b55
     name: MINT
@@ -23,7 +33,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.84907667-03:00"
+    created: "2022-10-11T10:17:10.574306227-03:00"
     description: A Helm chart for MINT
     digest: 7477e1f5ecc03f9c19e4abede7c23a1d50401e2f6a44be2a51f479f24a2d36ed
     name: MINT
@@ -33,7 +43,7 @@ entries:
     version: 0.2.9
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.845112666-03:00"
+    created: "2022-10-11T10:17:10.572549771-03:00"
     description: A Helm chart for MINT
     digest: b79c3f7cba33db725a6aaf85a59439e87a7c0fe5e8d59852ef0e90b1f05e5956
     name: MINT
@@ -43,7 +53,7 @@ entries:
     version: 0.2.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.843465564-03:00"
+    created: "2022-10-11T10:17:10.571352004-03:00"
     description: A Helm chart for MINT
     digest: c31c4aa8220f9151327e5ad0cf6e251689b72765564669f10a6626cd1d9e232c
     name: MINT
@@ -53,7 +63,7 @@ entries:
     version: 0.2.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.841680745-03:00"
+    created: "2022-10-11T10:17:10.570258382-03:00"
     description: A Helm chart for MINT
     digest: 111af7dfbec5892057282936a2ff8f3b1a8def57cf2010c6c68085da8c9e0d99
     name: MINT
@@ -63,7 +73,7 @@ entries:
     version: 0.2.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.84007308-03:00"
+    created: "2022-10-11T10:17:10.569216102-03:00"
     description: A Helm chart for MINT
     digest: 69112cec3295d1bd916262fc55cb4556dbb9d4d5c2371bfa63bee6af52ad4491
     name: MINT
@@ -73,7 +83,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.838718149-03:00"
+    created: "2022-10-11T10:17:10.56808181-03:00"
     description: A Helm chart for MINT
     digest: dbf6d1e148e72dc1ffd77c869c9b8da699a7bb749c899315a1886c64112f5b75
     name: MINT
@@ -83,7 +93,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.837105229-03:00"
+    created: "2022-10-11T10:17:10.566995816-03:00"
     description: A Helm chart for MINT
     digest: f9bf5365c50c5ed9e62609de277cc8d350b874c75c996e70e9ec9a58c6f0c600
     name: MINT
@@ -93,7 +103,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.835334296-03:00"
+    created: "2022-10-11T10:17:10.565921079-03:00"
     description: A Helm chart for MINT
     digest: 7e839c7397a2f4d2fc40a74885f14e1214db1c8dfe0de15de82f7f69025a2f64
     name: MINT
@@ -103,7 +113,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.833211522-03:00"
+    created: "2022-10-11T10:17:10.564808166-03:00"
     description: A Helm chart for MINT
     digest: d682a327bb7edbd8478f60f4fbbe652bd19240b2420fafd4fadcb010bdad330a
     name: MINT
@@ -113,7 +123,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.827594504-03:00"
+    created: "2022-10-11T10:17:10.557907717-03:00"
     description: A Helm chart for MINT
     digest: 90ef5332e1d5f7b04ab5c2c65411344370baae539c4e7d0377063a373e867636
     name: MINT
@@ -123,7 +133,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.82474502-03:00"
+    created: "2022-10-11T10:17:10.554513362-03:00"
     description: A Helm chart for MINT
     digest: d7534c936064ac704e57b1bc143684ddc9ac606568ef9bb6515c690cb3cb00bd
     name: MINT
@@ -133,7 +143,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.822023531-03:00"
+    created: "2022-10-11T10:17:10.552257148-03:00"
     description: A Helm chart for MINT
     digest: 51cad48a1795b51ab7cbb1eb177607cb77c36251210d9cdee1a05ea0f923dee8
     name: MINT
@@ -143,7 +153,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.82092505-03:00"
+    created: "2022-10-11T10:17:10.550722542-03:00"
     description: A Helm chart for MINT
     digest: c46dcecfee55dc90202e7c3d43cf5fec93b8631bbcfa207315fa006bba7dff97
     name: MINT
@@ -153,7 +163,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.820046733-03:00"
+    created: "2022-10-11T10:17:10.549511995-03:00"
     description: A Helm chart for MINT
     digest: c217e51981cc3f62cea28fe443082d153d4210d90de1e437d72d19c713f0fae3
     name: MINT
@@ -163,7 +173,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-09-27T11:28:12.819267377-03:00"
+    created: "2022-10-11T10:17:10.548499809-03:00"
     description: A Helm chart for MINT
     digest: 18f42649890a28c6eb34d4a2f57d2d99d318d208c3613691c8deb957713de1f0
     name: MINT
@@ -171,4 +181,4 @@ entries:
     urls:
     - https://mintproject.github.io/mint/charts/MINT-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-27T11:28:12.818460722-03:00"
+generated: "2022-10-11T10:17:10.547529077-03:00"
