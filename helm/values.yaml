@@ -103,7 +103,7 @@ components:
       # -- hasura image repository
       repository: mintproject/graphql-engine
       # -- hasura image tag
-      tag: 597064529d763ec8df612d239dd54c307de97e57
+      tag: 1335d824b77ccb9ea43718e0cfa57a771401da2e
       # --  hasura image pull policy
       pullPolicy: IfNotPresent
     # -- hasura environment variables
@@ -297,7 +297,7 @@ auth:
   # -- Keycloak URL
   url: https://auth.mint.isi.edu/
   # -- Realm
-  realm: realm 
+  realm: production 
   # -- Client ID
   ui_client_id: mint-ui
   # -- Keylocka URL token
