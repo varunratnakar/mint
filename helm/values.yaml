@@ -38,7 +38,7 @@ components:
       # -- data catalog image repository
       repository: mintproject/data-catalog
       # -- data catalog image tag
-      tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      tag: 89bd8354c69923e2da5db1098f8c3c272f59c0c2
       # -- data catalog image pull policy
       pullPolicy: IfNotPresent
     # -- data catalog ingress configuration
