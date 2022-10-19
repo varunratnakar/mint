@@ -173,13 +173,13 @@ components:
     # -- enable the model catalog api component
     enabled: true
     # -- api version
-    api_version: 1.8.0
+    api_version: ''
     # -- model catalog api image details 
     image:
       # -- model catalog api image repository
-      repository: mintproject/model-catalog-api
+      repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: latest
+      tag: 7369c74e1eaca7246bfdf6048d63adb69d2a2ce2
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
@@ -199,7 +199,8 @@ components:
       # -- model catalog api ingress class name
       className: "" 
       # -- model catalog api ingress annotations
-      annotations: {} 
+      annotations: 
+        nginx.ingress.kubernetes.io/enable-cors: "true"
       # -- model catalog api ingress hosts
       hosts:
         - host: api.models.mint.local

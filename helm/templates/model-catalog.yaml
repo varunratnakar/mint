@@ -17,6 +17,10 @@ spec:
       port: 3030 
       targetPort: 3030
       protocol: TCP
+    - name: "redis-endpoint"
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
   selector:
     app: {{ include "mint.prefix" . }}-model-catalog
 ---
@@ -46,6 +50,7 @@ spec:
           {{- with .Values.components.model_catalog_api  }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .image.pullPolicy }}
+          command: ["uvicorn", "openapi_server.main:app", "--workers", "8", "--host", "0.0.0.0" , "--port", "8080"]
           ports:
             - name: http
               containerPort: 8080
@@ -53,7 +58,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /v1.8.0/units?username=mint%40isi.edu&page=1&per_page=200
+              path: /v1.8.0/models?username=mint%40isi.edu&page=1&per_page=200
               port: http
             timeoutSeconds: 30
             periodSeconds: 10
@@ -70,6 +75,8 @@ spec:
               value: "{{ .environment.prefix }}"
             - name: ENDPOINT
               value: http://{{ include "mint.prefix" $ }}-model-catalog:3030/dataset
+            - name: REDIS_ADDRESS
+              value: {{ include "mint.prefix" $ }}-model-catalog:6379
           {{- end }}
             - name: AUTH_CLIENT_ID
               value: {{ .Values.auth.client_id }}
@@ -94,4 +101,11 @@ spec:
           ports:
             - name: http
               containerPort: 3030
+              protocol: TCP
+        - name: model-catalog-redis
+          image: redis:6.0.9-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis
+              containerPort: 6379 
               protocol: TCP
