@@ -173,13 +173,13 @@ components:
     # -- enable the model catalog api component
     enabled: true
     # -- api version
-    api_version: ''
+    api_version: 'v1.8.0'
     # -- model catalog api image details 
     image:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 7369c74e1eaca7246bfdf6048d63adb69d2a2ce2
+      tag: 99ccbf007ca44ba3188102e48081e4c6ab2d500d
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
