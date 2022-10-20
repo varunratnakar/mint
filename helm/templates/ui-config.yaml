@@ -15,12 +15,12 @@ data:
     {{ end }}
     {{ with .Values.components.data_catalog }}
     {{ if  .enabled }}
-    window.REACT_APP_DATA_CATALOG_URL = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
+    window.REACT_APP_DATA_CATALOG_API = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
     {{ end }}
     {{ end }}
     {{ with .Values.components.model_catalog_api}}
     {{ if  .enabled }}
-    window.REACT_APP_MODEL_CATALOG_API = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}/{{ .api_version }}";
+    window.REACT_APP_MODEL_CATALOG_API = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}/v{{ .api_version }}";
     {{ end }}
     {{ end }}
     {{ with .Values.components.hasura }}
