@@ -102,11 +102,13 @@ spec:
                   key: username
       volumes:
         - name: hasura-db
-          {{- if not (eq .Values.shared_storage.backend "hostpath") }}
+          {{- if .Values.components.hasura_db.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ include "mint.prefix" . }}-shared-persistent-volume
-            readOnly: false
+            {{- if .Values.components.hasura_db.persistence.existingClaim }}
+            claimName: {{ .Values.components.hasura_db.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "mint.prefix" . }}-hasura-db
+            {{- end }}
           {{- else }}
-          hostPath:
-            path: {{ .Values.shared_storage.hostpath.root_path }}/hasura-db
+          emptyDir: {}
           {{- end }}
