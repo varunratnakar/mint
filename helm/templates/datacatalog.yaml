@@ -113,11 +113,13 @@ spec:
                   key: database 
       volumes:
         - name: data-catalog-db
-          {{- if not (eq .Values.shared_storage.backend "hostpath") }}
+          {{- if .Values.components.data_catalog_db.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ include "mint.prefix" . }}-shared-persistent-volume
-            readOnly: false
+            {{- if .Values.components.data_catalog_db.persistence.existingClaim }}
+            claimName: {{ .Values.components.data_catalog_db.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "mint.prefix" . }}-data-catalog-db
+            {{- end }}
           {{- else }}
-          hostPath:
-            path: {{ .Values.shared_storage.hostpath.root_path }}/data-catalog-db
+          emptyDir: {}
           {{- end }}
