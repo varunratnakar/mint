@@ -71,29 +71,29 @@ components:
       # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
     persistence:
-      # @param persistence.enabled Enable persistence using Persistent Volume Claims
+      # persistence.enabled Enable persistence using Persistent Volume Claims
       #
       enabled: true
-      # @param persistence.storageClass Persistent Volume storage class
+      # persistence.storageClass Persistent Volume storage class
       # If defined, storageClassName: <storageClass>
       # If set to "-", storageClassName: "", which disables dynamic provisioning
       # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
       #
       storageClass: ""
-      # @param persistence.accessModes [array] Persistent Volume access modes
+      # persistence.accessModes [array] Persistent Volume access modes
       #
       accessModes:
         - ReadWriteOnce
-      # @param persistence.size Persistent Volume size
+      # persistence.size Persistent Volume size
       #
       size: 10Gi
-      # @param persistence.dataSource Custom PVC data source
+      # persistence.dataSource Custom PVC data source
       #
       dataSource: {}
-      # @param persistence.existingClaim The name of an existing PVC to use for persistence
+      # persistence.existingClaim The name of an existing PVC to use for persistence
       #
       existingClaim: ""
-      # @param persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
+      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
       # If set, the PVC can't have a PV dynamically provisioned for it
       # E.g.
       # selector:
@@ -101,7 +101,7 @@ components:
       #     app: my-app
       #
       selector: {}
-      # @param persistence.annotations Persistent Volume Claim annotations
+      # persistence.annotations Persistent Volume Claim annotations
       #
       annotations: {}
   # -- Model Catalog RDF store configuration
@@ -179,29 +179,29 @@ components:
       # -- hasura database image pull policy
       pullPolicy: IfNotPresent
     persistence:
-      # @param persistence.enabled Enable persistence using Persistent Volume Claims
+      # persistence.enabled Enable persistence using Persistent Volume Claims
       #
       enabled: true
-      # @param persistence.storageClass Persistent Volume storage class
+      # persistence.storageClass Persistent Volume storage class
       # If defined, storageClassName: <storageClass>
       # If set to "-", storageClassName: "", which disables dynamic provisioning
       # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
       #
       storageClass: ""
-      # @param persistence.accessModes [array] Persistent Volume access modes
+      # persistence.accessModes [array] Persistent Volume access modes
       #
       accessModes:
         - ReadWriteOnce
-      # @param persistence.size Persistent Volume size
+      # persistence.size Persistent Volume size
       #
       size: 10Gi
-      # @param persistence.dataSource Custom PVC data source
+      # persistence.dataSource Custom PVC data source
       #
       dataSource: {}
-      # @param persistence.existingClaim The name of an existing PVC to use for persistence
+      # persistence.existingClaim The name of an existing PVC to use for persistence
       #
       existingClaim: ""
-      # @param persistence.selector Selector to match an existing Persistent Volume for Hasura data PVC
+      # persistence.selector Selector to match an existing Persistent Volume for Hasura data PVC
       # If set, the PVC can't have a PV dynamically provisioned for it
       # E.g.
       # selector:
@@ -209,7 +209,7 @@ components:
       #     app: my-app
       #
       selector: {}
-      # @param persistence.annotations Persistent Volume Claim annotations
+      # persistence.annotations Persistent Volume Claim annotations
       #
       annotations: {}
   model_catalog_explorer:
@@ -315,8 +315,7 @@ google:
   # -- Google Maps API key
   maps:
     # -- Google Maps API key
-    # key: CHANGEME 
-    key: AIzaSyBl8J85KibSuhHEw_j0JTlITVTBb8oXiMo
+    key: CHANGEME 
 
 secrets:
   database:
