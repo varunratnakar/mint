@@ -69,3 +69,83 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create ports 
+*/}}
+{{- define "helm.ui_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- .Values.service.port }}
+{{- else }}
+{{- 30000 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+
+{{- define "helm.cromo_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 1 }}
+{{- else }}
+{{- add 30000 1 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+
+
+{{- define "helm.data_catalog_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 2 }}
+{{- else }}
+{{- add 30000 2 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+
+{{- define "helm.hasura_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 3 }}
+{{- else }}
+{{- add 30000 3 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+
+{{- define "helm.model_catalog_api_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 4 }}
+{{- else }}
+{{- add 30000 4 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "helm.model_catalog_endpoint_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 5 }}
+{{- else }}
+{{- add 30000 5 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

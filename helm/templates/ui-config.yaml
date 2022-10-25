@@ -8,6 +8,13 @@ data:
   config.js: |
     window.REACT_APP_WELCOME_MESSAGE = {{ .Values.welcome_message | quote }};
     // Mint Services
+    {{- if eq .Values.service.type "NodePort" }}
+    window.REACT_APP_CROMO_URL = "http://localhost:{{ include "helm.cromo_node_port" . }}";
+    window.REACT_APP_DATA_CATALOG_API = "http://localhost:{{ include "helm.data_catalog_node_port" . }}";
+    window.REACT_APP_MODEL_CATALOG_API = "http://localhost:{{ include "helm.model_catalog_api_node_port" . }}/{{ .Values.components.model_catalog_api.api_version }}";
+    window.REACT_APP_GRAPHQL_ENDPOINT = "localhost:{{ include "helm.hasura_node_port" . }}/v1/graphql";
+    window.REACT_APP_GRAPHQL_ENABLE_SSL = false;
+    {{ else if eq .Values.service.type "ClusterIP" }}
     {{ with .Values.components.cromo }}
     {{ if  .enabled }}
     window.REACT_APP_CROMO_URL = "http{{ if .ingress.tls }}s{{ end }}://{{ with (first .ingress.hosts ) }}{{ .host }}{{ end }}";
@@ -30,6 +37,7 @@ data:
     {{ end }}
     {{ end }}
 
+    {{ end }}
     window.REACT_APP_ENSEMBLE_MANAGER_API = "http://dev.ensemble.mint.isi.edu/v1";
     
     // Google API Key

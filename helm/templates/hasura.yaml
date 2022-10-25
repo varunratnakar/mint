@@ -12,6 +12,9 @@ spec:
     - name: "http"
       port: 80 
       targetPort: 8080 
+      {{ if eq .Values.service.type "NodePort" }}
+      nodePort: {{ include "helm.hasura_node_port" . }}
+      {{ end }}
       protocol: TCP
   selector:
     app: {{ include "mint.prefix" . }}-hasura
