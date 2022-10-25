@@ -11,10 +11,16 @@ spec:
   ports:
     - name: "http-api"
       port: 80
+      {{ if eq .Values.service.type "NodePort" }}
+      nodePort: {{ include "helm.model_catalog_api_node_port" . }}
+      {{ end }}
       targetPort: 8080
       protocol: TCP
     - name: "http-endpoint"
       port: 3030 
+      {{ if eq .Values.service.type "NodePort" }}
+      nodePort: {{ include "helm.model_catalog_endpoint_node_port" . }}
+      {{ end }}
       targetPort: 3030
       protocol: TCP
     - name: "redis-endpoint"

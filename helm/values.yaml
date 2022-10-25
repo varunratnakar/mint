@@ -3,6 +3,10 @@
 # Declare
 welcome_message: Welcome to MINT
 
+# -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
+service:
+  type: NodePort 
+
 components:
   # -- Cromo configuration
   cromo:
@@ -18,7 +22,7 @@ components:
     # -- cromo ingress configuration
     ingress:
       # -- enable the cromo ingress
-      enabled: true
+      enabled: false
       # -- cromo ingress class name
       className: ""
       # -- cromo ingress annotations
@@ -44,7 +48,7 @@ components:
     # -- data catalog ingress configuration
     ingress:
       # -- enable the data catalog ingress
-      enabled: true 
+      enabled: false 
       # -- data catalog ingress class name
       className: "" 
       # -- data catalog ingress annotations
@@ -81,7 +85,7 @@ components:
     # -- model catalog endpoint ingress configuration
     ingress:
       # -- enable the model catalog endpoint ingress
-      enabled: true 
+      enabled: false 
       # -- model catalog endpoint ingress class name
       className: "" 
       # -- model catalog endpoint ingress annotations
@@ -117,7 +121,7 @@ components:
     # -- hasura ingress configuration
     ingress:
       # -- enable the hasura ingress
-      enabled: true 
+      enabled: false 
       # -- hasura ingress class name
       className: 
       # -- hasura ingress annotations
@@ -155,7 +159,7 @@ components:
     # -- model catalog explorer ingress configuration
     ingress:
       # -- enable the model catalog api ingress
-      enabled: true 
+      enabled: false 
       # -- model catalog api ingress class name
       className: "" 
       # -- model catalog api ingress annotations
@@ -179,7 +183,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 99ccbf007ca44ba3188102e48081e4c6ab2d500d
+      tag: 656681ace6669148015d31eac1e30b0640b3b5d0
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
@@ -195,7 +199,7 @@ components:
     # -- model catalog api ingress configuration
     ingress:
       # -- enable the model catalog api ingress
-      enabled: true 
+      enabled: false 
       # -- model catalog api ingress class name
       className: "" 
       # -- model catalog api ingress annotations
@@ -224,7 +228,7 @@ components:
     # -- ui ingress configuration
     ingress:
       # -- enable the ui ingress
-      enabled: true 
+      enabled: false 
       # -- ui ingress class name
       className: "" 
       # -- ui ingress annotations
@@ -243,8 +247,8 @@ google:
   # -- Google Maps API key
   maps:
     # -- Google Maps API key
-    key: CHANGEME 
-
+    # key: CHANGEME 
+    key: AIzaSyBl8J85KibSuhHEw_j0JTlITVTBb8oXiMo
 
 shared_storage:
   # -- Shared volume storage backend
@@ -308,10 +312,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-
-service:
-  type: ClusterIP
-  port: 80
 
 serviceAccount:
   # Specifies whether a service account should be created
