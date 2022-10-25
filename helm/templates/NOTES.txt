@@ -31,7 +31,7 @@
     export MODEL_CATALOG_DATABASE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[1].nodePort}" services {{ include "mint.prefix" . }}-model-catalog)
     export NODE_IP="localhost"
   
-    echo "MINT User Interface: http://$NODE_IP:$NODE_PORT"
+    echo "MINT User Interface: http://$NODE_IP:$UI_PORT"
     echo "MINT Model Catalog API: http://$NODE_IP:$MODEL_CATALOG_API_PORT/{{ .Values.components.model_catalog_api.api_version }}/docs"
     echo "MINT Data Catalog: http://$NODE_IP:$DATA_CATALOG_PORT"
     echo "MINT Constraint Reasoning Over MOdels (CROMO): http://$NODE_IP:$CROMO_PORT"
