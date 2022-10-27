@@ -103,7 +103,8 @@ components:
       selector: {}
       # persistence.annotations Persistent Volume Claim annotations
       #
-      annotations: {}
+      annotations: 
+        helm.sh/resource-policy: keep
   # -- Model Catalog RDF store configuration
   model_catalog_endpoint:
     # -- enable the model catalog endpoint component
@@ -211,7 +212,8 @@ components:
       selector: {}
       # persistence.annotations Persistent Volume Claim annotations
       #
-      annotations: {}
+      annotations: 
+        helm.sh/resource-policy: keep
   model_catalog_explorer:
     # -- enable the model catalog api component
     enabled: true
