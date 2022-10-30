@@ -6,6 +6,7 @@ welcome_message: Welcome to MINT
 # -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
   type: NodePort 
+  port: 80
 
 components:
   # -- Cromo configuration
@@ -253,7 +254,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 656681ace6669148015d31eac1e30b0640b3b5d0
+      tag: 35c08b8cc3cb461922c9ef7fe11ca0848a71db9f
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
