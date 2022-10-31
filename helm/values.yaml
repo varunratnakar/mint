@@ -293,7 +293,7 @@ components:
       # -- ui image repository
       repository: mintproject/mint-ui-lit
       # -- ui image tag
-      tag: c05faecb6fe85d174c760e6d7a767efcbd3cce7e
+      tag: c1b1389cd4c9b3db28c6bf75d1676a7ee37afb31
       # -- ui image pull policy
       pullPolicy: IfNotPresent
     # -- ui ingress configuration
