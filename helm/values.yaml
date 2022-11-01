@@ -1,8 +1,11 @@
 # Default values for helm.
 # This is a YAML-formatted file.
 # Declare
-welcome_message: Welcome to MINT
 
+# -- Welcome message to be displayed in the home page
+welcome_message: Welcome to MINT
+# -- The username to be used as the default user
+default_user: mint@isi.edu
 # -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
   type: NodePort 

@@ -7,6 +7,9 @@ metadata:
 data:
   config.js: |
     window.REACT_APP_WELCOME_MESSAGE = {{ .Values.welcome_message | quote }};
+    {{- if .Values.default_user }}
+    window.REACT_APP_MODEL_CATALOG_DEFAULT_USER= {{ .Values.default_user | quote }};
+    {{- end }}
     // Mint Services
     {{- if eq .Values.service.type "NodePort" }}
     window.REACT_APP_CROMO_URL = "http://localhost:{{ include "helm.cromo_node_port" . }}";
