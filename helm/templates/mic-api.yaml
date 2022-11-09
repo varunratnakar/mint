@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mint.prefix" . }}-mic_api
+  name: {{ include "mint.prefix" . }}-mic-api
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "helm.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - name: "api"
+    - name: "http"
       port: 80
       targetPort: 3000
       {{ if eq .Values.service.type "NodePort" }}
@@ -21,22 +21,22 @@ spec:
       targetPort: 5432
       protocol: TCP
   selector:
-    app: {{ include "mint.prefix" . }}-mic_api
+    app: {{ include "mint.prefix" . }}-mic-api
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "mint.prefix" . }}-mic_api
+  name: {{ include "mint.prefix" . }}-mic-api
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "mint.prefix" . }}-mic_api
+      app: {{ include "mint.prefix" . }}-mic-api
   template:
     metadata:
       labels:
-        app: {{ include "mint.prefix" . }}-mic_api
+        app: {{ include "mint.prefix" . }}-mic-api
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -45,7 +45,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: mic_api
+        - name: mic-api
           {{- with .Values.components.mic_api  }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .image.pullPolicy }}
@@ -64,25 +64,25 @@ spec:
               port: http
           env:
             - name: DB_HOST
-              value: {{ include "mint.prefix" $ }}-mic_api
+              value: {{ include "mint.prefix" $ }}-mic-api
             - name: DB_PORT
               value: "5432"
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-mic_api-db-secrets
+                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: database 
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-mic_api-db-secrets
+                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: username 
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-mic_api-db-secrets
+                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: password
-        - name: mic_api-db
+        - name: mic-api-db
           {{- with .Values.components.mic_api_db }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .image.pullPolicy }}
@@ -90,7 +90,7 @@ spec:
           resources: {}
           volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: mic_api-db
+            name: mic-api-db
           ports:
             - name: postgres
               containerPort: 5432
@@ -112,13 +112,13 @@ spec:
                   name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: database 
       volumes:
-        - name: mic_api-db
+        - name: mic-api-db
           {{- if .Values.components.mic_api_db.persistence.enabled }}
           persistentVolumeClaim:
             {{- if .Values.components.mic_api_db.persistence.existingClaim }}
             claimName: {{ .Values.components.mic_api_db.persistence.existingClaim }}
             {{- else }}
-            claimName: {{ include "mint.prefix" . }}-mic_api-db
+            claimName: {{ include "mint.prefix" . }}-mic-api-db
             {{- end }}
           {{- else }}
           emptyDir: {}
