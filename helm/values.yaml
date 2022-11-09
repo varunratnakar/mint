@@ -47,7 +47,7 @@ components:
       # -- mic web image repository
       repository: mintproject/mic-web
       # -- mic web image tag
-      tag: f828e8fefb01d3e2e30b844aacb0c88e0ef6fffd
+      tag: 5452a074a322ef37327e50dea59d3607ec97cbbd
       # -- mic web image pull policy
       pullPolicy: IfNotPresent
       environment:
@@ -78,7 +78,7 @@ components:
       # -- mic api image repository
       repository: mintproject/mic-api
       # -- mic api image tag
-      tag: b967379d66cfa3079c1c55714dd2589a754b8ff6
+      tag: 47d281fbcac808a1835e7981e2bdfb5cb8431dd8
       # -- mic api image pull policy
       pullPolicy: IfNotPresent
     # -- mic api ingress configuration
