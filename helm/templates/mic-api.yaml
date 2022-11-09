@@ -54,14 +54,6 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           env:
             - name: DB_HOST
               value: {{ include "mint.prefix" $ }}-mic-api
@@ -72,7 +64,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: database 
-            - name: DB_USERNAME
+            - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ include "mint.prefix" . }}-mic-api-db-secrets
@@ -96,21 +88,21 @@ spec:
               containerPort: 5432
               protocol: TCP
           env:
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
-                  key: password
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
-                  key: username
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   name: {{ include "mint.prefix" . }}-mic-api-db-secrets
                   key: database 
+            - name: POSTGRES_USER 
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
+                  key: username 
+            - name: POSTGRES_PASSWORD  
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mint.prefix" . }}-mic-api-db-secrets
+                  key: password
       volumes:
         - name: mic-api-db
           {{- if .Values.components.mic_api_db.persistence.enabled }}

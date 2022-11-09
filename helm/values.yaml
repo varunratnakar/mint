@@ -8,8 +8,8 @@ welcome_message: Welcome to MINT
 default_user: mint@isi.edu
 # -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
-  type: ClusterIP 
-  port: 80
+  type: NodePort
+  port: 30000
 
 components:
   # -- Cromo configuration
@@ -48,6 +48,7 @@ components:
       repository: mintproject/mic-web
       # -- mic web image tag
       tag: 5452a074a322ef37327e50dea59d3607ec97cbbd
+      
       # -- mic web image pull policy
       pullPolicy: IfNotPresent
       environment:
@@ -78,7 +79,7 @@ components:
       # -- mic api image repository
       repository: mintproject/mic-api
       # -- mic api image tag
-      tag: 47d281fbcac808a1835e7981e2bdfb5cb8431dd8
+      tag: 11a6993d361e64e53fb81a2da7c838bb58446345
       # -- mic api image pull policy
       pullPolicy: IfNotPresent
     # -- mic api ingress configuration
@@ -103,7 +104,7 @@ components:
       # -- data catalog database image repository
       repository: postgres 
       # -- data catalog database image tag
-      tag: latest 
+      tag: 14
       # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
     persistence:
@@ -140,7 +141,7 @@ components:
       # persistence.annotations Persistent Volume Claim annotations
       #
       annotations: 
-        helm.sh/resource-policy: keep
+        #helm.sh/resource-policy: keep
   data_catalog:
     # -- enable the data catalog component
     enabled: true
@@ -332,7 +333,6 @@ components:
       tag: 2bc1ec44e5857f4870972367fddf0ca81ed8d27b
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
-    # -- model catalog explorer ingress configuration
     ingress:
       # -- enable the model catalog api ingress
       enabled: false 
@@ -449,6 +449,13 @@ secrets:
       password: "CHANGEME"
       # -- GraphQL database name
       database: "hasura"
+    mic_api:
+      # -- Mic API database username
+      username: "mic"
+      # -- Mic API database password
+      password: "CHANGEME"
+      # -- Mic API database name
+      database: "mic"
   # -- GraphQL admin credentials
   hasura:
     # -- RS256 JWT public certificate from the OIDC provider

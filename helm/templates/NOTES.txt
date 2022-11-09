@@ -9,6 +9,10 @@
       $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
           hasura migrate apply 
 
+
+      $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-mic-api -c mic-api -- \
+          yarn migrate
+
       # Create metadata
       $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
           hasura metadata apply

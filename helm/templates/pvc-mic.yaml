@@ -1,12 +1,11 @@
-{{- if and .Values.components.mic_api_db.persistence.enabled (not .Values.components.hasura_db.persistence.existingClaim) }}
+{{- if and .Values.components.mic_api_db.persistence.enabled (not .Values.components.mic_api_db.persistence.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ include "mint.prefix" . }}-mic_api-db
+  name: {{ include "mint.prefix" . }}-mic-api-db
   namespace: {{ .Release.Namespace | quote }}
   {{- if or .Values.components.mic_api_db.persistence.annotations .Values.commonAnnotations }}
   annotations:
-    helm.sh/resource-policy: keep
     {{- if .Values.components.mic_api_db.persistence.annotations }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.components.mic_api_db.persistence.annotations "context" $ ) | nindent 4 }}
     {{- end }}
