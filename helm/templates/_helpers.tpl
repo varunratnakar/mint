@@ -149,6 +149,31 @@ Create ports
 {{- end }}
 {{- end }}
 {{- end }}
+
+{{- define "helm.mic_api_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port 6 }}
+{{- else }}
+{{- add 30000 6 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "helm.mic_ui_node_port" -}}
+{{- if .Values.service.type }}
+{{- if eq .Values.service.type "NodePort" }}
+{{- if .Values.service.port }}
+{{- add .Values.service.port  7 }}
+{{- else }}
+{{- add 30000 7 }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
 {{/*
 Return  the proper Storage Class
 {{ include "common.storage.class" ( dict "persistence" .Values.path.to.the.persistence "global" $) }}

@@ -39,6 +39,108 @@ components:
               pathType: ImplementationSpecific
       # -- cromo ingress tls configuration
       tls: []
+  # -- enable mic web component
+  mic_ui:
+    # -- enable the mic web component
+    enabled: true
+    image:
+      # -- mic web image repository
+      repository: mintproject/mic-web
+      # -- mic web image tag
+      tag: f828e8fefb01d3e2e30b844aacb0c88e0ef6fffd
+      # -- mic web image pull policy
+      pullPolicy: IfNotPresent
+      environment:
+        # -- mic web environment variables
+        api_url:
+        airflow_url: 
+    # -- mic web ingress configuration
+    ingress:
+      # -- enable the mic web ingress
+      enabled: false 
+      # -- mic web ingress class name
+      className: "" 
+      # -- mic web ingress annotations
+      annotations: {} 
+      # -- mic web ingress hosts
+      hosts:
+        - host: mic.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      # -- mic web ingress tls configuration
+      tls: []
+  # -- mic api component
+  mic_api:
+    # -- enable the mic api component
+    enabled: true
+    image:
+      # -- mic api image repository
+      repository: mintproject/mic-api
+      # -- mic api image tag
+      tag: b967379d66cfa3079c1c55714dd2589a754b8ff6
+      # -- mic api image pull policy
+      pullPolicy: IfNotPresent
+    # -- mic api ingress configuration
+    ingress:
+      # -- enable the mic api ingress
+      enabled: false 
+      # -- mic api ingress class name
+      className: "" 
+      # -- mic api ingress annotations
+      annotations: {} 
+      # -- mic api ingress hosts
+      hosts:
+        - host: api.mic.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      # -- mic api ingress tls configuration
+      tls: []
+  # -- mic postgres database
+  mic_api_db:
+    image:
+      # -- data catalog database image repository
+      repository: postgres 
+      # -- data catalog database image tag
+      tag: latest 
+      # -- data catalog database image pull policy
+      pullPolicy: IfNotPresent
+    persistence:
+      # persistence.enabled Enable persistence using Persistent Volume Claims
+      #
+      enabled: true
+      # persistence.storageClass Persistent Volume storage class
+      # If defined, storageClassName: <storageClass>
+      # If set to "-", storageClassName: "", which disables dynamic provisioning
+      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
+      #
+      storageClass: ""
+      # persistence.accessModes [array] Persistent Volume access modes
+      #
+      accessModes:
+        - ReadWriteOnce
+      # persistence.size Persistent Volume size
+      #
+      size: 10Gi
+      # persistence.dataSource Custom PVC data source
+      #
+      dataSource: {}
+      # persistence.existingClaim The name of an existing PVC to use for persistence
+      #
+      existingClaim: ""
+      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
+      # If set, the PVC can't have a PV dynamically provisioned for it
+      # E.g.
+      # selector:
+      #   matchLabels:
+      #     app: my-app
+      #
+      selector: {}
+      # persistence.annotations Persistent Volume Claim annotations
+      #
+      annotations: 
+        helm.sh/resource-policy: keep
   data_catalog:
     # -- enable the data catalog component
     enabled: true
