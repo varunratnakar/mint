@@ -8,7 +8,7 @@ welcome_message: Welcome to MINT
 default_user: mint@isi.edu
 # -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
-  type: NodePort 
+  type: ClusterIP
   port: 80
 
 components:
@@ -53,7 +53,7 @@ components:
       environment:
         # -- mic web environment variables
         api_url:
-        airflow_url: 
+        airflow_url: https://airflow.mint.isi.edu/api/v1
     # -- mic web ingress configuration
     ingress:
       # -- enable the mic web ingress
