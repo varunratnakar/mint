@@ -8,8 +8,8 @@ welcome_message: Welcome to MINT
 default_user: mint@isi.edu
 # -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
-  type: ClusterIP
-  port: 80
+  type: NodePort 
+  port: 30000
 
 components:
   # -- Cromo configuration
