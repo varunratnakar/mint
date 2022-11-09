@@ -6,7 +6,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   config.js: |
-    window.REACT_APP_AIRFLOW_API = 'https://airflow.mint.isi.edu/api/v1'
+    window.REACT_APP_AIRFLOW_API = {{.Values.components.mic_ui.image.environment.airflow_url | quote }}
+    // mic api url
     {{- if .Values.components.mic_ui.image.environment.api_url  }}
     window.REACT_APP_MIC_API = {{ .Values.components.mic_ui.image.environment.api_url | quote }};
     {{- else }}
