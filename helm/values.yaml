@@ -140,7 +140,7 @@ components:
       # persistence.annotations Persistent Volume Claim annotations
       #
       annotations: 
-        #helm.sh/resource-policy: keep
+        helm.sh/resource-policy: keep
   data_catalog:
     # -- enable the data catalog component
     enabled: true
@@ -358,7 +358,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 8a9ef28754280b3ec399864ba860223faea9a5b3
+      tag: 17a48ff9ab59f9b4fd845869bb188f155258bd90
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
