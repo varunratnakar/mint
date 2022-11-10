@@ -47,7 +47,7 @@ components:
       # -- mic web image repository
       repository: mintproject/mic-web
       # -- mic web image tag
-      tag: 91a914e3ef47d2e26f0cd003f06ce1b0cfb488e3
+      tag: 1a143764b17a9786ce1221dfaa601d20fab9675e
       # -- mic web image pull policy
       pullPolicy: IfNotPresent
       environment:
