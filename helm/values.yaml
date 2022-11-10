@@ -47,8 +47,7 @@ components:
       # -- mic web image repository
       repository: mintproject/mic-web
       # -- mic web image tag
-      tag: 5452a074a322ef37327e50dea59d3607ec97cbbd
-      
+      tag: 91a914e3ef47d2e26f0cd003f06ce1b0cfb488e3
       # -- mic web image pull policy
       pullPolicy: IfNotPresent
       environment:
@@ -359,7 +358,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 35c08b8cc3cb461922c9ef7fe11ca0848a71db9f
+      tag: 8a9ef28754280b3ec399864ba860223faea9a5b3
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
