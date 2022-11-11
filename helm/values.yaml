@@ -358,7 +358,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 17a48ff9ab59f9b4fd845869bb188f155258bd90
+      tag: 8725afed3fb519a5082ef95dc48a8d51d7b6c4f8
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
