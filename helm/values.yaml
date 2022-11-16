@@ -220,7 +220,7 @@ components:
       # -- model catalog endpoint image repository
       repository: mintproject/model-catalog-endpoint
       # -- model catalog endpoint image tag
-      tag: 09999625c9aa4f7acc567c5c0d4536b798a6fc25
+      tag: 4f698c73d4ff48ddd20f31315ea23850df8737d7
       # -- model catalog endpoint image pull policy
       pullPolicy: IfNotPresent
     # -- environment
@@ -293,7 +293,7 @@ components:
       # -- hasura image repository
       repository: mintproject/graphql-engine
       # -- hasura image tag
-      tag: 1335d824b77ccb9ea43718e0cfa57a771401da2e
+      tag: 52fe407801c22fb036696daef37ab54b68a275f4
       # --  hasura image pull policy
       pullPolicy: IfNotPresent
     # -- hasura environment variables
@@ -403,7 +403,7 @@ components:
       # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
       # -- model catalog api image tag
-      tag: 8725afed3fb519a5082ef95dc48a8d51d7b6c4f8
+      tag: 6bd9c9bc2e1887e623b376c4688d3463e9831fdb
       # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     # -- model catalog api environment variables 
