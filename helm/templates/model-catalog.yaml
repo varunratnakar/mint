@@ -68,14 +68,16 @@ spec:
               value: "{{ .environment.context_dir }}"
             - name: QUERIES_DIR
               value: "{{ .environment.queries_dir }}"
+            - name: REDIS_ADDRESS
+              value: {{ include "mint.prefix" $ }}-model-catalog:6379
+          {{- end }}
+          {{- with .Values.components.model_catalog_endpoint  }}
+            - name: ENDPOINT
+              value: http://{{ include "mint.prefix" $ }}-model-catalog-endpoint:3030/{{ .environment.dataset }}
             - name: GRAPH_BASE
               value: "{{ .environment.graph_base }}"
             - name: PREFIX
               value: "{{ .environment.prefix }}"
-            - name: ENDPOINT
-              value: http://{{ include "mint.prefix" $ }}-model-catalog:3030/dataset
-            - name: REDIS_ADDRESS
-              value: {{ include "mint.prefix" $ }}-model-catalog:6379
           {{- end }}
             - name: AUTH_CLIENT_ID
               value: {{ .Values.auth.client_id }}

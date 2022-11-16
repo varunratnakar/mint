@@ -41,7 +41,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: model-catalog-endpoint
+        - name: endpoint
           {{- with .Values.components.model_catalog_endpoint  }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .image.pullPolicy }}
@@ -50,9 +50,37 @@ spec:
             - name: ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "mint.prefix" . }}-model-catalog-endpoint-endpoint-secrets
+                  name: {{ include "mint.prefix" . }}-model-catalog-endpoint-secrets
                   key: password
           ports:
             - name: http
               containerPort: 3030
               protocol: TCP
+          volumeMounts:
+            - name: db
+              mountPath: /fuseki-base/databases
+            - name: config
+              mountPath: /fuseki-base/configuration
+      volumes:
+        - name: config
+          {{- if .Values.components.mic_api_db.persistence.enabled }}
+          persistentVolumeClaim:
+            {{- if .Values.components.mic_api_db.persistence.existingClaim }}
+            claimName: {{ .Values.components.mic_api_db.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "mint.prefix" . }}-model-catalog-endpoint-config
+            {{- end }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        - name: db
+          {{- if .Values.components.mic_api_db.persistence.enabled }}
+          persistentVolumeClaim:
+            {{- if .Values.components.mic_api_db.persistence.existingClaim }}
+            claimName: {{ .Values.components.mic_api_db.persistence.existingClaim }}
+            {{- else }}
+            claimName: {{ include "mint.prefix" . }}-model-catalog-endpoint-db
+            {{- end }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}

@@ -21,6 +21,23 @@
       $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-hasura -c hasura -- \
           hasura seeds apply
 
+      $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-model-catalog-endpoint -c endpoint -- \
+        sh -c '
+          curl -v 'http://localhost:3030/$/datasets' \
+          -X POST \
+          -u admin:${ADMIN_PASSWORD} \
+          --data-raw "dbName={{ .Values.components.model_catalog_endpoint.environment.dataset  }}&dbType=tdb2"
+        '
+
+      $ kubectl -n {{ .Release.Namespace }} exec deployment/{{ include "mint.prefix" . }}-model-catalog-endpoint -c endpoint -- \
+        sh -c '
+          curl localhost:3030/{{ .Values.components.model_catalog_endpoint.environment.dataset  }}/data \
+           -X POST \
+           -u admin:${ADMIN_PASSWORD} \
+           --upload-file {{ .Values.components.model_catalog_endpoint.environment.backup_file }} \
+           -H  "Content-Type: application/trig" 
+           '
+
   1. Get the application URL by running these commands:
   {{- if .Values.components.ui.ingress.enabled }}
   {{  with .Values.components.ui }}

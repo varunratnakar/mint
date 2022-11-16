@@ -220,9 +220,19 @@ components:
       # -- model catalog endpoint image repository
       repository: mintproject/model-catalog-endpoint
       # -- model catalog endpoint image tag
-      tag: 91dabbb1c1f7b2b838e8d8e75a4091e5ec40d4a1
+      tag: 09999625c9aa4f7acc567c5c0d4536b798a6fc25
       # -- model catalog endpoint image pull policy
       pullPolicy: IfNotPresent
+    # -- environment
+    environment:
+      # -- the dataset name in the triple store
+      dataset: modelcatalog
+      # -- the graph prefix used by the RDF store
+      graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
+      # -- uri of the RDF resource
+      prefix: https://w3id.org/okn/i/mint/
+      # -- default backup file
+      backup_file: /fuseki-base/seeds/model-catalog.trig
     # -- model catalog endpoint ingress configuration
     ingress:
       # -- enable the model catalog endpoint ingress
@@ -239,6 +249,41 @@ components:
               pathType: ImplementationSpecific
       # -- model catalog endpoint ingress tls configuration
       tls: []
+    persistence:
+      # persistence.enabled Enable persistence using Persistent Volume Claims
+      #
+      enabled: true
+      # persistence.storageClass Persistent Volume storage class
+      # If defined, storageClassName: <storageClass>
+      # If set to "-", storageClassName: "", which disables dynamic provisioning
+      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
+      #
+      storageClass: ""
+      # persistence.accessModes [array] Persistent Volume access modes
+      #
+      accessModes:
+        - ReadWriteOnce
+      # persistence.size Persistent Volume size
+      #
+      size: 10Gi
+      # persistence.dataSource Custom PVC data source
+      #
+      dataSource: {}
+      # persistence.existingClaim The name of an existing PVC to use for persistence
+      #
+      existingClaim: ""
+      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
+      # If set, the PVC can't have a PV dynamically provisioned for it
+      # E.g.
+      # selector:
+      #   matchLabels:
+      #     app: my-app
+      #
+      selector: {}
+      # persistence.annotations Persistent Volume Claim annotations
+      #
+      annotations: 
+        helm.sh/resource-policy: keep
   # -- GraphQL hasura engine
   hasura:
     # -- enable the hasura component
@@ -367,10 +412,6 @@ components:
       context_dir: contexts/
       # -- where are the queries templates stored
       queries_dir: queries/
-      # -- the graph prefix used by the RDF store
-      graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
-      # -- uri of the RDF resource
-      prefix: https://w3id.org/okn/i/mint/
     # -- model catalog api ingress configuration
     ingress:
       # -- enable the model catalog api ingress
