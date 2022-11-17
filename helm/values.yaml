@@ -20,7 +20,7 @@ components:
       # -- cromo image repository
       repository: mintproject/cromo
       # -- cromo image tag
-      tag: latest
+      tag: 3c75586989aedf2573c37f5352f960c294377931
       # -- cromo image pull policy
       pullPolicy: IfNotPresent
     # -- cromo ingress configuration
