@@ -1,571 +1,273 @@
-# Default values for helm.
-# This is a YAML-formatted file.
-# Declare
-
-# -- Welcome message to be displayed in the home page
 welcome_message: Welcome to MINT
-# -- The username to be used as the default user
 default_user: mint@isi.edu
-# -- The service type to use. Valid values are NodePort and ClusterIP. NodePort is used for local development and ClusterIP is used for production. 
 service:
   type: NodePort
   port: 30000
-
 components:
-  # -- Cromo configuration
   cromo:
-    # - enable the cromo component
     enabled: true
     image:
-      # -- cromo image repository
       repository: mintproject/cromo
-      # -- cromo image tag
       tag: latest
-      # -- cromo image pull policy
       pullPolicy: IfNotPresent
-    # -- cromo ingress configuration
     ingress:
-      # -- enable the cromo ingress
       enabled: false
-      # -- cromo ingress class name
-      className: ""
-      # -- cromo ingress annotations
+      className: ''
       annotations: {}
-      # -- cromo ingress hosts
       hosts:
         - host: cromo.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- cromo ingress tls configuration
       tls: []
-  # -- enable mic web component
   mic_ui:
-    # -- enable the mic web component
     enabled: true
     image:
-      # -- mic web image repository
       repository: mintproject/mic-web
-      # -- mic web image tag
       tag: 1a143764b17a9786ce1221dfaa601d20fab9675e
-      # -- mic web image pull policy
       pullPolicy: IfNotPresent
       environment:
-        # -- mic web environment variables
-        api_url:
+        api_url: null
         airflow_url: https://airflow.mint.isi.edu/api/v1
-    # -- mic web ingress configuration
     ingress:
-      # -- enable the mic web ingress
-      enabled: false 
-      # -- mic web ingress class name
-      className: "" 
-      # -- mic web ingress annotations
-      annotations: {} 
-      # -- mic web ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: mic.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- mic web ingress tls configuration
       tls: []
-  # -- mic api component
   mic_api:
-    # -- enable the mic api component
     enabled: true
     image:
-      # -- mic api image repository
       repository: mintproject/mic-api
-      # -- mic api image tag
       tag: 11a6993d361e64e53fb81a2da7c838bb58446345
-      # -- mic api image pull policy
       pullPolicy: IfNotPresent
-    # -- mic api ingress configuration
     ingress:
-      # -- enable the mic api ingress
-      enabled: false 
-      # -- mic api ingress class name
-      className: "" 
-      # -- mic api ingress annotations
-      annotations: {} 
-      # -- mic api ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: api.mic.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- mic api ingress tls configuration
       tls: []
-  # -- mic postgres database
   mic_api_db:
     image:
-      # -- data catalog database image repository
-      repository: postgres 
-      # -- data catalog database image tag
+      repository: postgres
       tag: 14.6
-      # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
     persistence:
-      # persistence.enabled Enable persistence using Persistent Volume Claims
-      #
       enabled: true
-      # persistence.storageClass Persistent Volume storage class
-      # If defined, storageClassName: <storageClass>
-      # If set to "-", storageClassName: "", which disables dynamic provisioning
-      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
-      #
-      storageClass: ""
-      # persistence.accessModes [array] Persistent Volume access modes
-      #
+      storageClass: ''
       accessModes:
         - ReadWriteOnce
-      # persistence.size Persistent Volume size
-      #
       size: 10Gi
-      # persistence.dataSource Custom PVC data source
-      #
       dataSource: {}
-      # persistence.existingClaim The name of an existing PVC to use for persistence
-      #
-      existingClaim: ""
-      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
-      # If set, the PVC can't have a PV dynamically provisioned for it
-      # E.g.
-      # selector:
-      #   matchLabels:
-      #     app: my-app
-      #
+      existingClaim: ''
       selector: {}
-      # persistence.annotations Persistent Volume Claim annotations
-      #
-      annotations: 
+      annotations:
         helm.sh/resource-policy: keep
   data_catalog:
-    # -- enable the data catalog component
     enabled: true
     image:
-      # -- data catalog image repository
       repository: mintproject/data-catalog
-      # -- data catalog image tag
       tag: 89bd8354c69923e2da5db1098f8c3c272f59c0c2
-      # -- data catalog image pull policy
       pullPolicy: IfNotPresent
-    # -- data catalog ingress configuration
     ingress:
-      # -- enable the data catalog ingress
-      enabled: false 
-      # -- data catalog ingress class name
-      className: "" 
-      # -- data catalog ingress annotations
-      annotations: {} 
-      # -- data catalog ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: datacatalog.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- data catalog ingress tls configuration
       tls: []
-  # -- data database component
   data_catalog_db:
     image:
-      # -- data catalog database image repository
       repository: mintproject/data-catalog-db
-      # -- data catalog database image tag
       tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
-      # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
     persistence:
-      # persistence.enabled Enable persistence using Persistent Volume Claims
-      #
       enabled: true
-      # persistence.storageClass Persistent Volume storage class
-      # If defined, storageClassName: <storageClass>
-      # If set to "-", storageClassName: "", which disables dynamic provisioning
-      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
-      #
-      storageClass: ""
-      # persistence.accessModes [array] Persistent Volume access modes
-      #
+      storageClass: ''
       accessModes:
         - ReadWriteOnce
-      # persistence.size Persistent Volume size
-      #
       size: 10Gi
-      # persistence.dataSource Custom PVC data source
-      #
       dataSource: {}
-      # persistence.existingClaim The name of an existing PVC to use for persistence
-      #
-      existingClaim: ""
-      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
-      # If set, the PVC can't have a PV dynamically provisioned for it
-      # E.g.
-      # selector:
-      #   matchLabels:
-      #     app: my-app
-      #
+      existingClaim: ''
       selector: {}
-      # persistence.annotations Persistent Volume Claim annotations
-      #
-      annotations: 
+      annotations:
         helm.sh/resource-policy: keep
-  # -- Model Catalog RDF store configuration
   model_catalog_endpoint:
-    # -- enable the model catalog endpoint component
     enabled: true
-    # -- model catalog endpoint image repository
     image:
-      # -- model catalog endpoint image repository
       repository: mintproject/model-catalog-endpoint
-      # -- model catalog endpoint image tag
       tag: 4f698c73d4ff48ddd20f31315ea23850df8737d7
-      # -- model catalog endpoint image pull policy
       pullPolicy: IfNotPresent
-    # -- environment
     environment:
-      # -- the dataset name in the triple store
       dataset: modelcatalog
-      # -- the graph prefix used by the RDF store
-      graph_base: 	http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
-      # -- uri of the RDF resource
+      graph_base: http://endpoint.mint.isi.edu/modelCatalog-1.8.0/data/
       prefix: https://w3id.org/okn/i/mint/
-      # -- default backup file
       backup_file: /fuseki-base/seeds/model-catalog.trig
-    # -- model catalog endpoint ingress configuration
     ingress:
-      # -- enable the model catalog endpoint ingress
-      enabled: false 
-      # -- model catalog endpoint ingress class name
-      className: "" 
-      # -- model catalog endpoint ingress annotations
-      annotations: {} 
-      # -- model catalog endpoint ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: endpoint.models.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- model catalog endpoint ingress tls configuration
       tls: []
     persistence:
-      # persistence.enabled Enable persistence using Persistent Volume Claims
-      #
       enabled: true
-      # persistence.storageClass Persistent Volume storage class
-      # If defined, storageClassName: <storageClass>
-      # If set to "-", storageClassName: "", which disables dynamic provisioning
-      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
-      #
-      storageClass: ""
-      # persistence.accessModes [array] Persistent Volume access modes
-      #
+      storageClass: ''
       accessModes:
         - ReadWriteOnce
-      # persistence.size Persistent Volume size
-      #
       size: 10Gi
-      # persistence.dataSource Custom PVC data source
-      #
       dataSource: {}
-      # persistence.existingClaim The name of an existing PVC to use for persistence
-      #
-      existingClaim: ""
-      # persistence.selector Selector to match an existing Persistent Volume for WordPress data PVC
-      # If set, the PVC can't have a PV dynamically provisioned for it
-      # E.g.
-      # selector:
-      #   matchLabels:
-      #     app: my-app
-      #
+      existingClaim: ''
       selector: {}
-      # persistence.annotations Persistent Volume Claim annotations
-      #
-      annotations: 
+      annotations:
         helm.sh/resource-policy: keep
-  # -- GraphQL hasura engine
   hasura:
-    # -- enable the hasura component
     enabled: true
-    # -- hasura image repository
     image:
-      # -- hasura image repository
       repository: mintproject/graphql-engine
-      # -- hasura image tag
       tag: 52fe407801c22fb036696daef37ab54b68a275f4
-      # --  hasura image pull policy
       pullPolicy: IfNotPresent
-    # -- hasura environment variables
     environment:
-      # -- enable the hasura console
       enable_console: true
-      # -- enable the hasura dev mode
       enable_dev_mode: false
-      # -- unauthenticated role
       unauthorized_role: anonymous
-    # -- hasura ingress configuration
     ingress:
-      # -- enable the hasura ingress
-      enabled: false 
-      # -- hasura ingress class name
-      className: 
-      # -- hasura ingress annotations
-      annotations: {} 
-      # -- hasura ingress hosts
+      enabled: false
+      className: null
+      annotations: {}
       hosts:
         - host: graphql.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- hasura ingress tls configuration
       tls: []
-  # -- GraphQL Postgres Database
   hasura_db:
-    # -- hasura database image repository
     image:
-      # -- hasura database image repository
       repository: postgis/postgis
-      # -- hasura database image tag
       tag: 10-3.2-alpine
-      # -- hasura database image pull policy
       pullPolicy: IfNotPresent
     persistence:
-      # persistence.enabled Enable persistence using Persistent Volume Claims
-      #
       enabled: true
-      # persistence.storageClass Persistent Volume storage class
-      # If defined, storageClassName: <storageClass>
-      # If set to "-", storageClassName: "", which disables dynamic provisioning
-      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
-      #
-      storageClass: ""
-      # persistence.accessModes [array] Persistent Volume access modes
-      #
+      storageClass: ''
       accessModes:
         - ReadWriteOnce
-      # persistence.size Persistent Volume size
-      #
       size: 10Gi
-      # persistence.dataSource Custom PVC data source
-      #
       dataSource: {}
-      # persistence.existingClaim The name of an existing PVC to use for persistence
-      #
-      existingClaim: ""
-      # persistence.selector Selector to match an existing Persistent Volume for Hasura data PVC
-      # If set, the PVC can't have a PV dynamically provisioned for it
-      # E.g.
-      # selector:
-      #   matchLabels:
-      #     app: my-app
-      #
+      existingClaim: ''
       selector: {}
-      # persistence.annotations Persistent Volume Claim annotations
-      #
-      annotations: 
+      annotations:
         helm.sh/resource-policy: keep
   model_catalog_explorer:
-    # -- enable the model catalog api component
     enabled: true
-    # -- api version
-    # -- model catalog api image details 
     image:
-      # -- model catalog api image repository
       repository: mintproject/model-catalog-explorer
-      # -- model catalog api image tag
       tag: 2bc1ec44e5857f4870972367fddf0ca81ed8d27b
-      # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
     ingress:
-      # -- enable the model catalog api ingress
-      enabled: false 
-      # -- model catalog api ingress class name
-      className: "" 
-      # -- model catalog api ingress annotations
-      annotations: {} 
-      # -- model catalog api ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: models.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- model catalog api ingress tls configuration
       tls: []
-  # -- Model Catalog configuration
   model_catalog_api:
-    # -- enable the model catalog api component
     enabled: true
-    # -- api version
-    api_version: 'v1.8.0'
-    # -- model catalog api image details 
+    api_version: v1.8.0
     image:
-      # -- model catalog api image repository
       repository: mintproject/model-catalog-fastapi
-      # -- model catalog api image tag
       tag: 6bd9c9bc2e1887e623b376c4688d3463e9831fdb
-      # -- model catalog api image pull policy
       pullPolicy: IfNotPresent
-    # -- model catalog api environment variables 
     environment:
-      # -- where are the contexts stored
       context_dir: contexts/
-      # -- where are the queries templates stored
       queries_dir: queries/
-    # -- model catalog api ingress configuration
     ingress:
-      # -- enable the model catalog api ingress
-      enabled: false 
-      # -- model catalog api ingress class name
-      className: "" 
-      # -- model catalog api ingress annotations
-      annotations: 
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-      # -- model catalog api ingress hosts
+      enabled: false
+      className: ''
+      annotations:
+        nginx.ingress.kubernetes.io/enable-cors: 'true'
       hosts:
         - host: api.models.mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- model catalog api ingress tls configuration
       tls: []
-  # -- User Interface configuration
   ui:
-    # -- enable the ui component
     enabled: true
-    # -- ui image details
     image:
-      # -- ui image repository
       repository: mintproject/mint-ui-lit
-      # -- ui image tag
-      tag: 828715c173ec83de00641ee99ffcd56b58de4df2
-      # -- ui image pull policy
+      tag: 4dd2284aa3693f80bd7d02dad46d5d3024136de9
       pullPolicy: IfNotPresent
-    # -- ui ingress configuration
     ingress:
-      # -- enable the ui ingress
-      enabled: false 
-      # -- ui ingress class name
-      className: "" 
-      # -- ui ingress annotations
-      annotations: {} 
-      # -- ui ingress hosts
+      enabled: false
+      className: ''
+      annotations: {}
       hosts:
         - host: mint.local
           paths:
             - path: /
               pathType: ImplementationSpecific
-      # -- ui ingress tls configuration
       tls: []
-
-
 google:
-  # -- Google Maps API key
   maps:
-    # -- Google Maps API key
-    key: CHANGEME 
-
+    key: CHANGEME
 secrets:
   database:
-    # -- Data Catalog database credentials
     data_catalog:
-      # -- Data Catalog database username
-      username: "datacatalog"
-      # -- Data Catalog database password
-      password: "CHANGEME"
-      # -- Data Catalog database name
-      database: "datacatalog"
-    # -- Model Catalog database credentials
+      username: datacatalog
+      password: CHANGEME
+      database: datacatalog
     model_catalog_endpoint:
-      # -- Model Catalog database username
-      username: "admin"
-      # -- Model Catalog database password
-      password: "CHANGEME"
-    # -- GraphQL database credentials
+      username: admin
+      password: CHANGEME
     hasura:
-      # -- GraphQL database username
-      username: "hasura"
-      # -- GraphQL database password
-      password: "CHANGEME"
-      # -- GraphQL database name
-      database: "hasura"
+      username: hasura
+      password: CHANGEME
+      database: hasura
     mic_api:
-      # -- Mic API database username
-      username: "mic"
-      # -- Mic API database password
-      password: "CHANGEME"
-      # -- Mic API database name
-      database: "mic"
-  # -- GraphQL admin credentials
+      username: mic
+      password: CHANGEME
+      database: mic
   hasura:
-    # -- RS256 JWT public certificate from the OIDC provider
     jwt_secret: '{"type": "RS256", "key": "-----BEGIN CERTIFICATE-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmyQQ56WKKsVCUs8n9swlv5DV7st7UUdvNoDSnwovdU2vinQQ686//vRqlUJ5vpyI7r75qTXCPkXUitDhPvGEMfChnb9tuWdymSyZmMmT+34oaYo/2bGSZjTlLRVfRJjUnFYeWoVLoXVKJolyDWtU6bXbFNnUyysb/6YIpg5sSwxkLs/9yl6HsWdFconxPJO6KmMPSjcOc0fZermNq+cOEvj1OqRhVkxDqBebreI+zcgrJHNSN8d6cxTmfVQl1jIPHvxE5oN7qUdfYmK4D+SOlj8FlkUvwis+3Ix2AQsvNoOD1OzuqUOd/FpXBnEGaeTq9EMwDxplNqltR/qT3/poUwIDAQAB\n-----END CERTIFICATE-----"}'
-    # -- HASURA_GRAPHQL_ADMIN_SECRET
-    admin_secret: "CHANGEME"
-
-
-# -- Authentication configuration
+    admin_secret: CHANGEME
 auth:
-  # -- Client ID
-  client_id: model_catalog 
-  # -- Keycloak URL
+  client_id: model_catalog
   url: https://auth.mint.isi.edu/
-  # -- Realm
-  realm: production 
-  # -- Client ID
+  realm: production
   ui_client_id: mint-ui
-  # -- Keylocka URL token
-
-  
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-
+nameOverride: ''
+fullnameOverride: ''
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
-
+  name: ''
 podAnnotations: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
-
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
-
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
