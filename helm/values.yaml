@@ -103,7 +103,7 @@ components:
       # -- data catalog database image repository
       repository: postgres 
       # -- data catalog database image tag
-      tag: 14
+      tag: 14.6
       # -- data catalog database image pull policy
       pullPolicy: IfNotPresent
     persistence:
