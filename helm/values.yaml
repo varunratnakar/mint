@@ -327,7 +327,7 @@ components:
       # -- hasura database image repository
       repository: postgis/postgis
       # -- hasura database image tag
-      tag: 10-2.5-alpine
+      tag: 10-3.2-alpine
       # -- hasura database image pull policy
       pullPolicy: IfNotPresent
     persistence:

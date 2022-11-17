@@ -89,7 +89,7 @@ spec:
                   name: {{ include "mint.prefix" . }}-model-catalog-endpoint-secrets
                   key: password
         - name: model-catalog-redis
-          image: redis:6.0.9-alpine
+          image: redis:6.0.16-alpine
           imagePullPolicy: IfNotPresent
           ports:
             - name: redis
