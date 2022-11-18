@@ -90,7 +90,7 @@ components:
   data_catalog_db:
     image:
       repository: mintproject/data-catalog-db
-      tag: 15f10f5717870ecf1f9e5fb0f193c5ecbf8c2af3
+      tag: eb6546857a341b32685d458d656cfc9a1e5abc36
       pullPolicy: IfNotPresent
     persistence:
       enabled: true
