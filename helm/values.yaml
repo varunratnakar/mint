@@ -192,7 +192,7 @@ components:
     api_version: v1.8.0
     image:
       repository: mintproject/model-catalog-fastapi
-      tag: 40ca03058cbf0ac8cb12628e0c96a6b9b394c193
+      tag: 8a6d3c09d7529d5b7b86e098c08bf69f1df2848d
       pullPolicy: IfNotPresent
     environment:
       context_dir: contexts/
