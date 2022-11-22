@@ -41,7 +41,7 @@ data:
     {{ end }}
 
     {{ end }}
-    window.REACT_APP_ENSEMBLE_MANAGER_API = "http://dev.ensemble.mint.isi.edu/v1";
+    window.REACT_APP_ENSEMBLE_MANAGER_API = "https://dev.ensemble.mint.isi.edu/v1";
     
     // Google API Key
     window.REACT_APP_GOOGLE_MAPS_KEY = {{ .Values.google.maps.key | quote }};
