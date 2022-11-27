@@ -10,7 +10,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - name: "http"
-      port: 80
+      port: {{ include "helm.cromo_node_port" . }}
       targetPort: 9090
       {{ if eq .Values.service.type "NodePort" }}
       nodePort: {{ include "helm.cromo_node_port" . }}

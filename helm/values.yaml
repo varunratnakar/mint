@@ -208,6 +208,26 @@ components:
             - path: /
               pathType: ImplementationSpecific
       tls: []
+  ensemble_manager:
+    enabled: true
+    image:
+      repository: kcapd/ensemble-manager
+      tag: latest
+      pullPolicy: IfNotPresent
+    environment:
+      data_dir: /data/storage/mint/
+      data_url: https://data.mint.isi.edu/
+      parallel: 5
+    ingress:
+      enabled: false
+      className: ''
+      annotations: {}
+      hosts:
+        - host: ensemble-manager.mint.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
   ui:
     enabled: true
     image:

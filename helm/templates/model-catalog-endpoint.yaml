@@ -10,7 +10,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - name: "http-endpoint"
-      port: 3030 
+      port: {{ include "helm.model_catalog_endpoint_node_port" . }}
       {{ if eq .Values.service.type "NodePort" }}
       nodePort: {{ include "helm.model_catalog_endpoint_node_port" . }}
       {{ end }}

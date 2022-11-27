@@ -10,7 +10,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - name: "http"
-      port: 80 
+      port: {{ include "helm.hasura_node_port" . }}
       targetPort: 8080 
       {{ if eq .Values.service.type "NodePort" }}
       nodePort: {{ include "helm.hasura_node_port" . }}
