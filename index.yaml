@@ -5,7 +5,7 @@ entries:
     appVersion: 1.17.0
     created: "2022-11-27T13:59:33.040100929-03:00"
     description: A Helm chart for MINT
-    digest: 7495d8189c045340a9eb52d3e2d24113a2815d4e2bf6881ff26cb4b8ab5e6944
+    digest: 0faf8418a35ef115440f5e3f75a07c755cb21a4539079ccba8ce56d0fa48a69c
     name: MINT
     type: application
     urls:
