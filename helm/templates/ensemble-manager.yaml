@@ -51,8 +51,8 @@ spec:
           emptyDir: {}
       containers:
         - name: head
-          image: kcapd/mint-ensemble-manager
-          imagePullPolicy: IfNotPresent
+          image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
           env:
             - name: DOCKER_HOST
               value: tcp://localhost:2375
@@ -74,7 +74,7 @@ spec:
           imagePullPolicy: IfNotPresent
           command: ['redis-server', '--port', '7379']
         - name: docker
-          image: arm64v8/docker:20.10.21-dind
+          image: docker:20.10.21-dind
           imagePullPolicy: IfNotPresent
           command: ["dockerd", "--host", "tcp://127.0.0.1:2375"]
           securityContext:

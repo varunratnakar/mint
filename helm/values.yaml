@@ -74,8 +74,8 @@ components:
   data_catalog:
     enabled: true
     image:
-      repository: mintproject/data-catalog
-      tag: 89bd8354c69923e2da5db1098f8c3c272f59c0c2
+      repository: kcapd/mint-data-catalog
+      tag: latest
       pullPolicy: IfNotPresent
     ingress:
       enabled: false
@@ -89,8 +89,8 @@ components:
       tls: []
   data_catalog_db:
     image:
-      repository: mintproject/data-catalog-db
-      tag: eb6546857a341b32685d458d656cfc9a1e5abc36
+      repository: kcapd/mint-data-catalog-db
+      tag: latest
       pullPolicy: IfNotPresent
     persistence:
       enabled: true
@@ -211,7 +211,7 @@ components:
   ensemble_manager:
     enabled: true
     image:
-      repository: kcapd/ensemble-manager
+      repository: kcapd/mint-ensemble-manager
       tag: latest
       pullPolicy: IfNotPresent
     environment:

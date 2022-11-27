@@ -30,8 +30,8 @@ A Helm chart for MINT
 | components.cromo.ingress.tls | list | `[]` |  |
 | components.data_catalog.enabled | bool | `true` |  |
 | components.data_catalog.image.pullPolicy | string | `"IfNotPresent"` |  |
-| components.data_catalog.image.repository | string | `"mintproject/data-catalog"` |  |
-| components.data_catalog.image.tag | string | `"89bd8354c69923e2da5db1098f8c3c272f59c0c2"` |  |
+| components.data_catalog.image.repository | string | `"kcapd/mint-data-catalog"` |  |
+| components.data_catalog.image.tag | string | `"latest"` |  |
 | components.data_catalog.ingress.annotations | object | `{}` |  |
 | components.data_catalog.ingress.className | string | `""` |  |
 | components.data_catalog.ingress.enabled | bool | `false` |  |
@@ -40,8 +40,8 @@ A Helm chart for MINT
 | components.data_catalog.ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | components.data_catalog.ingress.tls | list | `[]` |  |
 | components.data_catalog_db.image.pullPolicy | string | `"IfNotPresent"` |  |
-| components.data_catalog_db.image.repository | string | `"mintproject/data-catalog-db"` |  |
-| components.data_catalog_db.image.tag | string | `"eb6546857a341b32685d458d656cfc9a1e5abc36"` |  |
+| components.data_catalog_db.image.repository | string | `"kcapd/mint-data-catalog-db"` |  |
+| components.data_catalog_db.image.tag | string | `"latest"` |  |
 | components.data_catalog_db.persistence.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | components.data_catalog_db.persistence.annotations."helm.sh/resource-policy" | string | `"keep"` |  |
 | components.data_catalog_db.persistence.dataSource | object | `{}` |  |
@@ -55,7 +55,7 @@ A Helm chart for MINT
 | components.ensemble_manager.environment.data_url | string | `"https://data.mint.isi.edu/"` |  |
 | components.ensemble_manager.environment.parallel | int | `5` |  |
 | components.ensemble_manager.image.pullPolicy | string | `"IfNotPresent"` |  |
-| components.ensemble_manager.image.repository | string | `"kcapd/ensemble-manager"` |  |
+| components.ensemble_manager.image.repository | string | `"kcapd/mint-ensemble-manager"` |  |
 | components.ensemble_manager.image.tag | string | `"latest"` |  |
 | components.ensemble_manager.ingress.annotations | object | `{}` |  |
 | components.ensemble_manager.ingress.className | string | `""` |  |
