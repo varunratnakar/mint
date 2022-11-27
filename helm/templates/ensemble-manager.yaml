@@ -51,8 +51,10 @@ spec:
           emptyDir: {}
       containers:
         - name: head
+          {{- with .Values.components.ensemble_manager }}
           image: "{{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}"
           imagePullPolicy: {{ .image.pullPolicy }}
+          {{- end }}
           env:
             - name: DOCKER_HOST
               value: tcp://localhost:2375

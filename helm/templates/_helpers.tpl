@@ -178,7 +178,7 @@ Create ports
 {{- if .Values.service.type }}
 {{- if eq .Values.service.type "NodePort" }}
 {{- if .Values.service.port }}
-{{- add .Values.service.port 1 }}
+{{- add .Values.service.port 8 }}
 {{- else }}
 {{- add 30000 8 }}
 {{- end }}

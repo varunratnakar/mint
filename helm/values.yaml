@@ -42,8 +42,8 @@ components:
   mic_api:
     enabled: true
     image:
-      repository: mintproject/mic-api
-      tag: 2825e342aca2b914a1bdd08168c6ad12d38fa711
+      repository: kcapd/mic-api
+      tag: latest
       pullPolicy: IfNotPresent
     ingress:
       enabled: false
@@ -106,8 +106,8 @@ components:
   model_catalog_endpoint:
     enabled: true
     image:
-      repository: mintproject/model-catalog-endpoint
-      tag: 4f698c73d4ff48ddd20f31315ea23850df8737d7
+      repository: kcapd/model-catalog-endpoint
+      tag: latest
       pullPolicy: IfNotPresent
     environment:
       dataset: modelcatalog
@@ -138,8 +138,8 @@ components:
   hasura:
     enabled: true
     image:
-      repository: mintproject/graphql-engine
-      tag: f11c7d00e6cea23c3e616e7d5dbd63cdbedc2650
+      repository: kcapd/graphql-engine
+      tag: latest
       pullPolicy: IfNotPresent
     environment:
       enable_console: true
@@ -191,8 +191,8 @@ components:
     enabled: true
     api_version: v1.8.0
     image:
-      repository: mintproject/model-catalog-fastapi
-      tag: e495b2dd5cf5a67f82dae1fb8d4a8a32fb25e6d8
+      repository: kcapd/model-catalog-fastapi
+      tag: latest
       pullPolicy: IfNotPresent
     environment:
       context_dir: contexts/
