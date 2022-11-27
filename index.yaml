@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   MINT:
   - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2022-11-27T13:59:33.040100929-03:00"
+    description: A Helm chart for MINT
+    digest: 7495d8189c045340a9eb52d3e2d24113a2815d4e2bf6881ff26cb4b8ab5e6944
+    name: MINT
+    type: application
+    urls:
+    - https://varunratnakar.github.io/mint/charts/MINT-1.5.0.tgz
+    version: 1.5.0
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-11-18T13:59:33.040100929-03:00"
     description: A Helm chart for MINT
